@@ -20,6 +20,7 @@ private:
 	Weapon* SellWeapons();
 	Weapon* GetWeaponByName(const string& _name) const;
 	void DisplayConsumable()const;
+	string* GetConsumablesName() const;
 	Consumable* SellConsumable();
 };
 

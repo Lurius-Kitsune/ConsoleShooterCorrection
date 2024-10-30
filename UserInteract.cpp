@@ -46,3 +46,64 @@ bool GetBool(const string& _answersPossible)
 	CLEAR;
 	return _answer;
 }
+
+void DisplayMenu(const string* _options, const int _currentIndex, const u_int& _maxOptions)
+{
+	DISPLAY("==========ACTION==========", true);
+	for (u_int _i = 0; _i < _maxOptions; _i++)
+	{
+		string _firstSymbol = "", _secondSymbol = "" RESET;
+		if (_i == _currentIndex)
+		{
+			_firstSymbol = YELLOW "[";
+			_secondSymbol = "]" RESET;
+		}
+		DISPLAY(_firstSymbol + _options[_i] + _secondSymbol, true);
+	}
+	DISPLAY("==========================", true);
+}
+
+int OpenMenu(const string* _options, const u_int& _maxOptions)
+{
+	int _currentIndex = 0;
+	SPACE;
+	do
+	{
+		DisplayMenu(_options, _currentIndex, _maxOptions);
+		
+		if (_kbhit())
+		{
+			// Attendre une touche
+			u_int _input = 0;
+			_input = _getch();
+
+			// Si la touche est entrée, alors _isChoiceMade = true
+			switch (_input)
+			{
+			case 13:
+				return _currentIndex;
+				// Si la touche est fleche du haut, alors _choiceIndex--
+			case 72:
+				_currentIndex--;
+				// Si _choiceIndex < 0, alors _choiceIndex = _maxChoice-1 (car tableau)
+				if (_currentIndex < 0)
+				{
+					_currentIndex = _maxOptions - 1;
+				}
+				break;
+				// Si la touche est fleche du bas, alors _choiceIndex++
+			case 80:
+				_currentIndex++;
+				if (_currentIndex >= _maxOptions)
+				{
+					_currentIndex = 0; // on retourne en haut
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		CLEAR_SCREEN;
+	} while (true);
+}
+

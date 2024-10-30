@@ -25,7 +25,7 @@ struct Consumable : public Purchasable
 		return GetTypeName();
 	}
 
-private:
 	string GetTypeName()const;
+private:
 };
 

@@ -79,8 +79,21 @@ void Shop::DisplayConsumable() const
     }
 }
 
+string* Shop::GetConsumablesName() const
+{
+    string* _newArray = new string[consumablesCount];
+    for (u_int _i = 0; _i < consumablesCount; _i++)
+    {
+        _newArray[_i] = consumables[_i]->GetTypeName();
+    }
+    return _newArray;
+}
+
 Consumable* Shop::SellConsumable()
 {
-    DisplayConsumable();
-    return nullptr;
+    DISPLAY("Que souhaitez-vous acheter comme consomable ?", true);
+    string* _consumablesName = GetConsumablesName();
+    const int _consumableIndex = OpenMenu(_consumablesName, consumablesCount);
+    delete[] _consumablesName;
+    return consumables[_consumableIndex];
 }
