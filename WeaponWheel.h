@@ -12,7 +12,7 @@ public:
 
 public:
 	void Display() const;
-	void AddWeapon(Weapon* _weapon);
+	bool AddWeapon(Weapon* _weapon);
 	bool RemoveWeapon(Weapon* _weapon);
 	bool RemoveWeaponByIndex(const u_int& _index);
 	bool ConstainsWeapon(Weapon* _weapon)const;

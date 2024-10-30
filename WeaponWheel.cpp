@@ -23,18 +23,23 @@ void WeaponWheel::Display() const
 	}
 }
 
-void WeaponWheel::AddWeapon(Weapon* _weapon)
+bool WeaponWheel::AddWeapon(Weapon* _weapon)
 {
-	Weapon** _tempWeapons = new Weapon * [weaponsCount + 1];
-	for (u_int _i = 0; _i < weaponsCount; _i++)
+	if(ConstainsWeapon(_weapon))
 	{
-		_tempWeapons[_i] = allWeapons[_i];
-	}
+		Weapon** _tempWeapons = new Weapon * [weaponsCount + 1];
+		for (u_int _i = 0; _i < weaponsCount; _i++)
+		{
+			_tempWeapons[_i] = allWeapons[_i];
+		}
 
-	_tempWeapons[weaponsCount] = _weapon;
-	delete allWeapons;
-	allWeapons = _tempWeapons;
-	weaponsCount++;
+		_tempWeapons[weaponsCount] = _weapon;
+		delete allWeapons;
+		allWeapons = _tempWeapons;
+		weaponsCount++;
+		return true;
+	}
+	return false;
 }
 
 bool WeaponWheel::RemoveWeapon(Weapon* _weapon)
@@ -66,7 +71,7 @@ bool WeaponWheel::RemoveWeaponByIndex(const u_int& _index)
 
 bool WeaponWheel::ConstainsWeapon(Weapon* _weapon) const
 {
-	return weaponsCount > 0;
+	return GetWeaponByName(_weapon->GetName());
 }
 
 bool WeaponWheel::IsValidIndex(const u_int& _index) const
