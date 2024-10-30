@@ -3,5 +3,6 @@
 struct Purchasable
 {
 	virtual ~Purchasable() = default;
+	virtual string ToString()const = 0;
 };
 

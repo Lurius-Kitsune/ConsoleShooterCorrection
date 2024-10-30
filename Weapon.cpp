@@ -10,7 +10,7 @@ Weapon::Weapon(const string& _name, const string& _description, const string& _s
 	accuracy = _accuracy;
 }
 
-string Weapon::ToString()
+string Weapon::ToString()const
 {
 	return "[Weapon] :" + (this ? name +
 		"\n\t->" + description + 

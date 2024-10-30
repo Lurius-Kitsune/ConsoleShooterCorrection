@@ -20,7 +20,7 @@ struct Consumable : public Purchasable
 
 	Consumable(const int _purcharsePrice, const ConsumableType& _type);
 
-	string ToString()const
+	string ToString()const override
 	{
 		return GetTypeName();
 	}

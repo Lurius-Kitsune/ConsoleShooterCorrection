@@ -50,7 +50,7 @@ bool GetBool(const string& _answersPossible)
 void DisplayMenu(const string* _options, const int _currentIndex, const u_int& _maxOptions)
 {
 	DISPLAY("==========ACTION==========", true);
-	for (u_int _i = 0; _i < _maxOptions; _i++)
+	for (u_int _i = 0; _i <= _maxOptions; _i++)
 	{
 		string _firstSymbol = "", _secondSymbol = "" RESET;
 		if (_i == _currentIndex)
@@ -58,7 +58,7 @@ void DisplayMenu(const string* _options, const int _currentIndex, const u_int& _
 			_firstSymbol = YELLOW "[";
 			_secondSymbol = "]" RESET;
 		}
-		DISPLAY(_firstSymbol + (_currentIndex == _maxOptions ? "Quitter" : _options[_i]) + _secondSymbol, true);
+		DISPLAY(_firstSymbol + (_i == _maxOptions ? "Quitter" : _options[_i]) + _secondSymbol, true);
 	}
 	DISPLAY("==========================", true);
 }
@@ -102,8 +102,9 @@ int OpenMenu(const string* _options, const u_int& _maxOptions)
 			default:
 				break;
 			}
+			CLEAR_SCREEN;
 		}
-		CLEAR_SCREEN;
+		
 	} while (true);
 }
 
