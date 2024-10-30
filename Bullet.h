@@ -1,7 +1,7 @@
 #pragma once
 #include "Macro.h"
-
-enum BulletType
+#include "PurchasableItem.h"
+enum BulletType 
 {
 	BT_HOLLOW_POINT = 1,
 	BT_BOAT_TAIL = 2,
@@ -11,7 +11,7 @@ enum BulletType
 	BT_PARTITION = 6,
 };
 
-struct Bullet
+struct Bullet : public PurchasableItem
 {
 	BulletType type;
 
@@ -22,6 +22,8 @@ struct Bullet
 		return type;
 	}
 
-	string GetTypeName()const;
+	string GetTypeName()const override;
+
+	string ToString()const override;
 };
 

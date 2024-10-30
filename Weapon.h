@@ -1,6 +1,6 @@
 #pragma once
-#include "Purchasable.h"
-class Weapon : public Purchasable
+#include "UserInteract.h"
+class Weapon
 {
 	string name;
 	string description;
@@ -26,7 +26,7 @@ public:
 
 public: 
 	virtual void Attack(){};
-	virtual string ToString()const override;
+	virtual string ToString()const;
 	virtual void Drop();
 
 	bool operator == (const Weapon& _other);

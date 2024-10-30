@@ -5,6 +5,7 @@ Bullet::Bullet(const BulletType& _type)
 	type = _type;
 }
 
+
 string Bullet::GetTypeName() const
 {
 	switch (type)
@@ -32,4 +33,9 @@ string Bullet::GetTypeName() const
 	}
 
 	return "Unknown";
+}
+
+string Bullet::ToString() const
+{
+	return GetTypeName();
 }

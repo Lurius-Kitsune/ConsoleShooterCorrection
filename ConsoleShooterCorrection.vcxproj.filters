@@ -54,10 +54,7 @@
     <ClInclude Include="WeaponWheel.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Consumable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Purchasable.h">
+    <ClInclude Include="PurchasableItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UserInteract.h">
@@ -70,6 +67,9 @@
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Shop.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Consumable.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
@@ -104,7 +104,7 @@
     <ClCompile Include="Shop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Purchasable.cpp">
+    <ClCompile Include="PurchasableItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UserInteract.cpp">

@@ -39,7 +39,6 @@ void Inventory::Open()
 	{
 		CLEAR_SCREEN;
 		_menuIndex = OpenMenu(_inventoryCategoriesNames, _inventoryCategoriesCount, "Quel magasin accéder ?");
-		Purchasable* _purchase;
 		if (_menuIndex == 0)
 		{
 			OpenConsumable();

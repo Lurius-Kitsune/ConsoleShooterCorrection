@@ -4,10 +4,8 @@ class Shop
 {
 	Weapon** weapons;
 	u_int weaponsCount;
-	Consumable** consumables;
-	u_int consumablesCount;
-	Bullet** bullets;
-	u_int bulletsCount;
+	PurchasableItem** purchasableItems;
+	u_int purchasableItemsCount;
 	Player* player;
 
 public:
@@ -23,12 +21,13 @@ private:
 	string* GetWeaponsName() const;
 
 	//Bullet
-	string* GetBulletsName() const;
 	Bullet* SellBullets();
 
 	//Consumable
-	string* GetConsumablesName() const;
 	Consumable* SellConsumable();
+
+	//PurchsableItem
+	string* GetPurchasableItemsName(PurchasableItem* _type, u_int& _arrayCoun) const;
 
 	void Close();
 };

@@ -10,25 +10,21 @@ Shop::Shop()
         };
     weaponsCount = 1;
 
-    consumables = new Consumable * [4]
-        {
-            new Consumable(0, CT_MILK),
-            new Consumable(0, CT_APPLE),
-            new Consumable(0, CT_SPINACH),
-            new Consumable(0, CT_WATER)
-        };
-    consumablesCount = 4;
+	purchasableItemsCount = 10;
 
-    bulletsCount = 6;
-    bullets = new Bullet * [bulletsCount]
-    {
-        new Bullet(BT_PARTITION),
-            new Bullet(BT_ARROW),
-            new Bullet(BT_BOAT_TAIL),
-            new Bullet(BT_HOLLOW_POINT),
-            new Bullet(BT_JACKETED_HOLLOW_POINT),
-            new Bullet(BT_ROUND_NOSE)
-    };
+	purchasableItems = new PurchasableItem * [purchasableItemsCount]
+        {
+                new Bullet(BT_PARTITION),
+                new Bullet(BT_ARROW),
+                new Consumable(0, CT_MILK),
+                new Consumable(0, CT_APPLE),
+                new Bullet(BT_BOAT_TAIL),
+                new Bullet(BT_HOLLOW_POINT),
+                new Consumable(0, CT_SPINACH),
+                new Consumable(0, CT_WATER),
+                new Bullet(BT_JACKETED_HOLLOW_POINT),
+                new Bullet(BT_ROUND_NOSE)
+        };
 }
 
 Shop::~Shop()
@@ -39,17 +35,11 @@ Shop::~Shop()
     }
     delete[] weapons;
 
-    for (u_int _i = 0; _i < consumablesCount; _i++)
-    {
-        delete consumables[_i];
-    }
-    delete[] consumables;
-
-    for (u_int _i = 0; _i < bulletsCount; _i++)
-    {
-        delete bullets[_i];
-    }
-    delete[] bullets;
+	for (u_int _i = 0; _i < purchasableItemsCount; _i++)
+	{
+		delete purchasableItems[_i];
+	}
+    delete[] purchasableItems;
 }
 
 
@@ -73,7 +63,6 @@ void Shop::Open(Player* _player)
     {
         CLEAR_SCREEN;
         _menuIndex = OpenMenu(_shopItemNames, _shopItemNamesCount, "Quel magasin accéder ?");
-        Purchasable* _purchase;
         if (_menuIndex == 0)
         {
             if(Weapon* _purchase = SellWeapons())
@@ -123,7 +112,7 @@ Weapon* Shop::SellWeapons()
         {
             _weapon = weapons[_weaponsIndex];
         }
-        if (_containsWeapon = _wheel->ConstainsWeapon(_weapon))
+        if (_containsWeapon = _wheel->ContainsWeapon(_weapon))
         {
             DISPLAY("Vous posséder déja cette arme !", true);
         }
@@ -141,54 +130,55 @@ string* Shop::GetWeaponsName() const
     for (u_int _i = 0; _i < weaponsCount; _i++)
     {
         Weapon* _weapon = weapons[_i];
-        _weaponsName[_i] = (player->GetWheel()->ConstainsWeapon(_weapon) ?
+        _weaponsName[_i] = (player->GetWheel()->ContainsWeapon(_weapon) ?
                 STRIKETHROUGH_TEXT + _weapon->GetName() + RESET :
                 _weapon->GetSkin() + _weapon->GetName() + RESET);
     }
     return _weaponsName;
 }
 
-string* Shop::GetBulletsName() const
-{
-    string* _newArray = new string[bulletsCount];
-
-    for (u_int _index = 0; _index < bulletsCount; _index++)
-    {
-        _newArray[_index] = bullets[_index]->GetTypeName();
-    }
-
-    return _newArray;
-}
-
 Bullet* Shop::SellBullets()
 {
-    string* _bulletsName = GetBulletsName();
-    const u_int& _bulletIndex = OpenMenu(_bulletsName, bulletsCount, "Quelle item souhaitez-vous acheter ?");
+    u_int _bulletsCount = 0;
+    Bullet* _type = new Bullet(BT_ARROW);
+    string* _bulletsName = GetPurchasableItemsName(_type, _bulletsCount);
+    const u_int& _bulletIndex = OpenMenu(_bulletsName, _bulletsCount, "Quelle item souhaitez-vous acheter ?");
     delete[] _bulletsName;
 
-    const bool _isValidIndex = _bulletIndex >= 0 && _bulletIndex < bulletsCount;
-    Bullet* _bullet = bullets[_bulletIndex];
+    const bool _isValidIndex = _bulletIndex >= 0 && _bulletIndex < _bulletsCount;
+    Bullet* _bullet = dynamic_cast<Bullet*>(purchasableItems[_bulletIndex]);
     return _isValidIndex ? new Bullet(*_bullet) : nullptr;
 }
 
-string* Shop::GetConsumablesName() const
-{
-    string* _newArray = new string[consumablesCount];
-    for (u_int _i = 0; _i < consumablesCount; _i++)
-    {
-        _newArray[_i] = consumables[_i]->GetTypeName();
-    }
-    return _newArray;
-}
 
 Consumable* Shop::SellConsumable()
 {
-    string* _consumablesName = GetConsumablesName();
-    const int _consumableIndex = OpenMenu(_consumablesName, consumablesCount, "Que souhaitez-vous acheter comme consomable ?");
+	u_int _consumablesCount = 0;
+	Consumable* _type = new Consumable(0, CT_MILK);
+    string* _consumablesName = GetPurchasableItemsName(_type, _consumablesCount);
+
+    const int _consumableIndex = OpenMenu(_consumablesName, _consumablesCount, "Que souhaitez-vous acheter comme consomable ?");
     delete[] _consumablesName;
-    bool _isValidIndex = _consumableIndex >= 0 && _consumableIndex < consumablesCount;
-    Consumable* _consumable = consumables[_consumableIndex];
+    bool _isValidIndex = _consumableIndex >= 0 && _consumableIndex < _consumablesCount;
+
+    Consumable* _consumable = dynamic_cast<Consumable*>(purchasableItems[_consumableIndex]);
     return _isValidIndex ? new Consumable(*_consumable) : nullptr;
+}
+
+string* Shop::GetPurchasableItemsName(PurchasableItem* _type, u_int& _arrayCount) const
+{
+	bool _isConsumable = dynamic_cast<Consumable*>(_type);
+    string* _newArray = new string[purchasableItemsCount];
+
+    for (u_int _i = 0; _i < purchasableItemsCount; _i++)
+    {
+        if ((_isConsumable && dynamic_cast<Consumable*>(purchasableItems[_i])) ||
+            (!_isConsumable && dynamic_cast<Bullet*>(purchasableItems[_i])))
+        {
+            _newArray[_arrayCount++] = purchasableItems[_i]->GetTypeName();
+        }
+    }
+    return _newArray;
 }
 
 void Shop::Close()

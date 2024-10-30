@@ -1,5 +1,5 @@
 #pragma once
-#include "Purchasable.h"
+#include "PurchasableItem.h"
 enum ConsumableType 
 {
 	CT_WATER,
@@ -8,7 +8,7 @@ enum ConsumableType
 	CT_SPINACH
 };
 
-struct Consumable : public Purchasable
+struct Consumable : public PurchasableItem
 {
 	int purchasePrice;
 	ConsumableType type;
@@ -25,7 +25,7 @@ struct Consumable : public Purchasable
 		return GetTypeName();
 	}
 
-	string GetTypeName()const;
+	string GetTypeName()const override;
 private:
 };
 
