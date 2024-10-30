@@ -2,8 +2,7 @@
 #include <random>
 #include <iostream>
 #include <string>   
-#include <conio.h>
-#include <iomanip>
+
 using namespace std;
 
 typedef unsigned int u_int;

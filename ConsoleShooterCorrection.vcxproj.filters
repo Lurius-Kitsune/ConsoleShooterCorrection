@@ -27,7 +27,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConsolMacroColor.h">
+    <ClInclude Include="Color.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="Macro.h">
@@ -51,6 +51,9 @@
     <ClInclude Include="Bullet.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="WeaponWheel.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -70,6 +73,12 @@
     </ClCompile>
     <ClCompile Include="WeaponRange.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponWheel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,16 @@ Weapon::Weapon(const string& _name, const string& _description, const int _buyin
 	accuracy = _accuracy;
 }
 
+string Weapon::ToString()
+{
+	return "[Weapon] :" + (this ? name +
+		"\n\t->" + description + 
+		"\n\t->" + to_string(buyingPrice) + "€" +
+		+"\n\t->" + skin +
+		+"\n\t->" + to_string(accuracy)
+		: "NONE");
+}
+
 void Weapon::Drop()
 {
 	// TODO

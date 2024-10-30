@@ -20,21 +20,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
-    <ClInclude Include="ConsolMacroColor.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WeaponRange.h" />
     <ClInclude Include="WeaponMelee.h" />
+    <ClInclude Include="WeaponWheel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Color.cpp" />
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WeaponRange.cpp" />
     <ClCompile Include="WeaponMelee.cpp" />
+    <ClCompile Include="WeaponWheel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Objective.txt" />
