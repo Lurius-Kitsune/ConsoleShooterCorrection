@@ -18,32 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Bullet.h" />
-    <ClInclude Include="ConsolMacroColor.h" />
-    <ClInclude Include="Macro.h" />
-    <ClInclude Include="Main.h" />
-    <ClInclude Include="Random.h" />
-    <ClInclude Include="Weapon.h" />
-    <ClInclude Include="WeaponRange.h" />
-    <ClInclude Include="WeaponMelee.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Macro.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Weapon.cpp" />
-    <ClCompile Include="WeaponRange.cpp" />
-    <ClCompile Include="WeaponMelee.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Objective.txt" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{63973e1d-0d25-41b1-b39e-8ab2f2b00a65}</ProjectGuid>
-    <RootNamespace>ConsoleShooterCorrection</RootNamespace>
+    <ProjectGuid>{3d88361c-3deb-4621-889c-f60d908f2ac3}</ProjectGuid>
+    <RootNamespace>Héritage</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -147,6 +126,36 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Animal.cpp" />
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="Dog.cpp" />
+    <ClCompile Include="GameWar.cpp" />
+    <ClCompile Include="Macro.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="SickDog.cpp" />
+    <ClCompile Include="Soldier.cpp" />
+    <ClCompile Include="Square.cpp" />
+    <ClCompile Include="Weapon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Animal.h" />
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="ConsolMacroColor.h" />
+    <ClInclude Include="Dog.h" />
+    <ClInclude Include="GameWar.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="Random.h" />
+    <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="Macro.h" />
+    <ClInclude Include="SickDog.h" />
+    <ClInclude Include="Soldier.h" />
+    <ClInclude Include="Square.h" />
+    <ClInclude Include="Weapon.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

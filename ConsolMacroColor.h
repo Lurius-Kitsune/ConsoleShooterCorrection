@@ -109,7 +109,7 @@
 #define COLOR(x) "\x1B[38;5;"<<x<<"m"
 #define BG_COLOR(x) "\x1B[48;5;"<<x<<"m"
 
-static string RainbowString(string _word, const u_int _wordSize)
+static string RainbowString(string _word)
 {
 	const string _rainbowTable[] =
 	{
@@ -133,11 +133,11 @@ static string RainbowString(string _word, const u_int _wordSize)
 
 	const u_int _rainbowSize = size(_rainbowTable);
 	string _newWord = "";
-	for (u_int _i = 0; _i < _wordSize; _i++)
+	for (u_int _i = 0; _i < _word.length(); _i++)
 	{
 		_newWord += _rainbowTable[RandomInt(_rainbowSize, 0)] + _word[_i];
 	}
 
-	return _newWord + RESET;
+	return _newWord+RESET;
 
 }

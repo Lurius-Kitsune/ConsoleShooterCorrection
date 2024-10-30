@@ -2,6 +2,10 @@
 #pragma once
 #include "ConsolMacroColor.h"
 
+//using namespace std;
+//
+//typedef unsigned int u_int;
+
 #define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
 
 #define CLEAR cin.clear(); \

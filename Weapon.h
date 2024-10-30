@@ -1,20 +1,40 @@
 #pragma once
 #include "Macro.h"
+
 class Weapon
 {
 	string name;
-	string description;
-	int buyingPrice;
-	string skin; // color
-	float accuracy;
+	u_int maxAmmo;
+	u_int currentAmmo;
+	u_int bulletPerShot;
+	u_int damagePerShot;
+	u_int magazine;
+	u_int maxMagazine;
 
 public:
-	//Weapon() = default;
-	Weapon(const string& _name, const string& _description, const int _buyingPrice,
-		const string& _skin, const float _accuracy);
+	string GetName()const
+	{
+		return name;
+	}
 
-public: 
-	virtual void Attack() = 0;
-	virtual void Drop();
+	u_int GetMaxAmmo() const
+	{
+		return maxAmmo;
+	}
+
+	u_int GetCurrentAmmo() const
+	{
+		return currentAmmo;
+	}
+
+	Weapon();
+	Weapon(const string& _name, const u_int& _maxAmmo, const u_int& _bulletPerShot,
+		const u_int& _damagePerShot, const u_int& _maxMagazine);
+
+	string ToString();
+public:
+	virtual int Shoot();
+	virtual void Reload();
+	virtual void AddOnMagazine(const u_int& _nbAmmoFound);
 };
 
