@@ -27,6 +27,7 @@
     <ClInclude Include="Purchasable.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Shop.h" />
+    <ClInclude Include="UserInteract.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WeaponRange.h" />
     <ClInclude Include="WeaponMelee.h" />
@@ -40,6 +41,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Purchasable.cpp" />
     <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="UserInteract.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WeaponRange.cpp" />
     <ClCompile Include="WeaponMelee.cpp" />

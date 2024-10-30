@@ -6,7 +6,7 @@ Consumable::Consumable(const int _purcharsePrice, const ConsumableType& _type)
 	type = _type;
 }
 
-string Consumable::GetTypeName()
+string Consumable::GetTypeName()const
 {
 	switch (type)
 	{
@@ -19,6 +19,6 @@ string Consumable::GetTypeName()
 	case CT_SPINACH:
 		return "Epinard";
 	default:
-		break;
+		return "None";
 	}
 }

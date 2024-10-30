@@ -63,6 +63,9 @@
     <ClInclude Include="Purchasable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UserInteract.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -97,6 +100,9 @@
     </ClCompile>
     <ClCompile Include="Purchasable.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInteract.cpp">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
