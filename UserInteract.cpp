@@ -16,8 +16,9 @@ int GetInt()
 	return _answer;
 }
 
-string GetLine()
+string GetLine(const string& _question)
 {
+	DISPLAY(_question, _question.empty() ? false : true)
 	string _line = string();
 	bool _wantToQuit;
 

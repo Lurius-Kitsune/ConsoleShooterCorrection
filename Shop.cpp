@@ -55,8 +55,21 @@ void Shop::DisplayWeapons() const
 Weapon* Shop::SellWeapons()
 {
     DisplayWeapons();
-    return nullptr;
+    const string& _name = GetLine("Quelle arme souhaitez-vous acheter ?");
+    return GetWeaponByName(_name);
 }
+
+Weapon* Shop::GetWeaponByName(const string& _name) const
+{
+    for (u_int _i = 0; _i < weaponsCount; _i++)
+    {
+        if (weapons[_i]->GetName() == _name)
+        {
+            return weapons[_i];
+        };
+    }
+    return nullptr;
+} 
 
 void Shop::DisplayConsumable() const
 {

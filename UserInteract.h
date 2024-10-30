@@ -6,7 +6,7 @@ using namespace std;
 typedef unsigned int u_int;
 
 int GetInt();
-string GetLine();
+string GetLine(const string& _question = "");
 
 bool GetBool(const string& _answersPossible = "[0] Oui\t[1] Non");
 
