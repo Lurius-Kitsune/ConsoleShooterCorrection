@@ -45,7 +45,7 @@ bool WeaponWheel::RemoveWeapon(Weapon* _weapon)
 		bool _hasSkip = false;
 		for (u_int _i = 0; _i < weaponsCount; _i++)
 		{
-			if (allWeapons[_i] == _weapon)
+			if (!_hasSkip && *allWeapons[_i] == *_weapon)
 			{
 				_hasSkip = true;
 				continue;
@@ -84,12 +84,10 @@ Weapon* WeaponWheel::GetWeaponByName(const string& _name) const
 {
 	for (u_int _i = 0; _i < weaponsCount; _i++)
 	{
-		if (allWeapons[_i] == )
+		if (allWeapons[_i]->GetName() == _name)
 		{
-			_hasSkip = true;
-			continue;
-		}
-		_tempWeapons[_i] = allWeapons[_i + _hasSkip];
+			return allWeapons[_i];
+		};
 	}
-	return allWeapons[_index];
+	return nullptr;
 }

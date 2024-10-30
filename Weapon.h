@@ -9,6 +9,12 @@ class Weapon
 	float accuracy;
 
 public:
+
+	string GetName()const
+	{
+		return name;
+	}
+
 	//Weapon() = default;
 	Weapon(const string& _name, const string& _description, const int _buyingPrice,
 		const string& _skin, const float _accuracy);
