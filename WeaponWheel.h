@@ -13,8 +13,8 @@ public:
 public:
 	void Display() const;
 	void AddWeapon(Weapon* _weapon);
-	void RemoveWeapon(Weapon* _weapon);
-	void RemoveWeaponByIndex(const u_int& _index);
+	bool RemoveWeapon(Weapon* _weapon);
+	bool RemoveWeaponByIndex(const u_int& _index);
 	bool ConstainsWeapon(Weapon* _weapon)const;
 	bool IsValidIndex(const u_int& _index) const;
 	Weapon* GetWeaponByIndex(const u_int& _index)const;

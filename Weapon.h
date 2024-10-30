@@ -17,5 +17,7 @@ public:
 	virtual void Attack() = 0;
 	virtual string ToString();
 	virtual void Drop();
+
+	bool operator == (const Weapon& _other);
 };
 

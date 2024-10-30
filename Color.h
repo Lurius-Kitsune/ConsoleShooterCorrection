@@ -1,6 +1,10 @@
 ﻿#pragma once
-
+#include "Macro.h"
 #include "Random.h"
+#include <chrono>
+#include <thread>
+using namespace chrono;
+using namespace this_thread;
 
 
 // Une s�quence ANSI (ou code ANSI d'�chappement)
@@ -109,4 +113,5 @@
 #define COLOR(x) "\x1B[38;5;"<<x<<"m"
 #define BG_COLOR(x) "\x1B[48;5;"<<x<<"m"
 
-static string RainbowString(string _word, const u_int _wordSize);
+string RainbowString(const string& _word);
+void DisplayRainbow(const string& _text);

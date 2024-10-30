@@ -25,3 +25,8 @@ void Weapon::Drop()
 	// TODO
 	DISPLAY("Arme laché!", true);
 }
+
+bool Weapon::operator==(const Weapon& _other)
+{
+	return name == _other.name;
+}
