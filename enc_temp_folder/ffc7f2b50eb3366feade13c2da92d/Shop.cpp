@@ -39,35 +39,14 @@ Shop::~Shop()
 /// </summary>
 /// <param name="_purchasables">Purchasable qui vont etre affecter</param>
 /// <param name="_purchasablesCount">Le nb d'objet</param>
-void Shop::Open(Purchasable**& _purchasables, u_int& _purchasablesCount)
+void Shop::Open(Purchasable**& _purchasables, const u_int _purchasablesCount)
 {
     const string _shopItemNames[] =
     {
         "Armes",
         "Consomable"
     };
-    const u_int& _shopItemNamesCount = size(_shopItemNames);
-    int _menuIndex;
-    do
-    {
-        _menuIndex = OpenMenu(_shopItemNames, _shopItemNamesCount);
-        Purchasable* _purchase;
-        switch (_menuIndex)
-        {
-        case 1:
-            _purchase = SellWeapons();
-            AddPurchasable(_purchasables, _purchasablesCount, _purchase);
-            break;
-        case 2:
-            _purchase = SellConsumable();
-            AddPurchasable(_purchasables, _purchasablesCount, _purchase);
-            break;
-        default:
-            break;
-        }
-    } while (true);
-    
-
+    OpenMenu(_shopItemNames, size(_shopItemNames));
 }
 
 void Shop::DisplayWeapons() const
@@ -122,18 +101,4 @@ Consumable* Shop::SellConsumable()
     const int _consumableIndex = OpenMenu(_consumablesName, consumablesCount);
     delete[] _consumablesName;
     return consumables[_consumableIndex];
-}
-
-void Shop::AddPurchasable(Purchasable**& _purchasables, u_int& _purchasablesCount, Purchasable* _purchase)
-{
-    Purchasable** _tempPurchasable = new Purchasable * [_purchasablesCount + 1];
-    for (u_int _i = 0; _i < weaponsCount; _i++)
-    {
-        _tempPurchasable[_i] = _purchasables[_i];
-    }
-
-    _tempPurchasable[weaponsCount] = _purchase;
-    delete _purchasables;
-    _purchasables = _tempPurchasable;
-    _purchasablesCount++;
 }

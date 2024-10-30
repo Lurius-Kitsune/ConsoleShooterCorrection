@@ -58,7 +58,7 @@ void DisplayMenu(const string* _options, const int _currentIndex, const u_int& _
 			_firstSymbol = YELLOW "[";
 			_secondSymbol = "]" RESET;
 		}
-		DISPLAY(_firstSymbol + (_currentIndex == _maxOptions ? "Quitter" : _options[_i]) + _secondSymbol, true);
+		DISPLAY(_firstSymbol + _options[_i] + _secondSymbol, true);
 	}
 	DISPLAY("==========================", true);
 }
@@ -94,7 +94,7 @@ int OpenMenu(const string* _options, const u_int& _maxOptions)
 				// Si la touche est fleche du bas, alors _choiceIndex++
 			case 80:
 				_currentIndex++;
-				if (_currentIndex > _maxOptions)
+				if (_currentIndex >= _maxOptions)
 				{
 					_currentIndex = 0; // on retourne en haut
 				}

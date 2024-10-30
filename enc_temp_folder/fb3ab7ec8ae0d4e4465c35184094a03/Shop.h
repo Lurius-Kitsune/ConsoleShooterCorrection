@@ -13,7 +13,7 @@ public:
 	~Shop();
 
 public:
-	void Open(Purchasable**& _purchasables, u_int& _purchasablesCount);
+	void Open(Purchasable**& _purchasables, const u_int _purchasablesCount);
 
 private:
 	void DisplayWeapons()const;
@@ -22,6 +22,5 @@ private:
 	void DisplayConsumable()const;
 	string* GetConsumablesName() const;
 	Consumable* SellConsumable();
-	void AddPurchasable(Purchasable**& _purchasables, u_int& _purchasablesCount, Purchasable* _purchase);
 };
 
