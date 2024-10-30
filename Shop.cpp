@@ -61,18 +61,6 @@ Weapon* Shop::SellWeapons()
     return weapons[_weaponsIndex];
 }
 
-Weapon* Shop::GetWeaponByName(const string& _name) const
-{
-    for (u_int _i = 0; _i < weaponsCount; _i++)
-    {
-        if (weapons[_i]->GetName() == _name)
-        {
-            return weapons[_i];
-        };
-    }
-    return nullptr;
-} 
-
 string* Shop::GetWeaponsName() const
 {
     string* _newArray = new string[weaponsCount];

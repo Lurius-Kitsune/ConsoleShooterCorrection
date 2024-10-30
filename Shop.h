@@ -18,7 +18,6 @@ public:
 private:
 	void DisplayWeapons()const;
 	Weapon* SellWeapons();
-	Weapon* GetWeaponByName(const string& _name) const;
 	string* GetWeaponsName() const;
 	void DisplayConsumable()const;
 	string* GetConsumablesName() const;
