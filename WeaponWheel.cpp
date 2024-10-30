@@ -2,7 +2,8 @@
 
 WeaponWheel::WeaponWheel()
 {
-
+	weaponsCount = 0;
+	allWeapons = new Weapon * [weaponsCount];
 }
 
 WeaponWheel::~WeaponWheel()
