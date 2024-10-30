@@ -56,7 +56,7 @@ void DisplayMenu(const string* _options, const int _currentIndex, const u_int& _
 		if (_i == _currentIndex)
 		{
 			_firstSymbol = YELLOW "[";
-			_secondSymbol = "]" RESET;
+			_secondSymbol = YELLOW "]" RESET;
 		}
 		DISPLAY(_firstSymbol + (_i == _maxOptions ? "Quitter" : _options[_i]) + _secondSymbol, true);
 	}
@@ -66,7 +66,6 @@ void DisplayMenu(const string* _options, const int _currentIndex, const u_int& _
 int OpenMenu(const string* _options, const u_int& _maxOptions)
 {
 	int _currentIndex = 0;
-	SPACE;
 	DisplayMenu(_options, _currentIndex, _maxOptions);
 	do
 	{

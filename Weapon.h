@@ -15,6 +15,11 @@ public:
 		return name;
 	}
 
+	string GetSkin()const
+	{
+		return skin;
+	}
+
 	//Weapon() = default;
 	Weapon(const string& _name, const string& _description, const string& _skin,
 		const int _buyingPrice, const float _accuracy);

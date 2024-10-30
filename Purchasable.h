@@ -1,5 +1,7 @@
 #pragma once
 #include "UserInteract.h"
+
+// Todo Remove
 struct Purchasable
 {
 	virtual ~Purchasable() = default;

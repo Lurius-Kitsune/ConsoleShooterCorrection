@@ -24,6 +24,7 @@
     <ClInclude Include="Consumable.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Purchasable.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Shop.h" />
@@ -39,6 +40,7 @@
     <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Purchasable.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="UserInteract.cpp" />

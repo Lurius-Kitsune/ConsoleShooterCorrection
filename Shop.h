@@ -1,27 +1,31 @@
 #pragma once
 #include "Weapon.h"
 #include "Consumable.h"
+#include "Player.h"
 class Shop
 {
 	Weapon** weapons;
 	u_int weaponsCount;
 	Consumable** consumables;
 	u_int consumablesCount;
+	Player* player;
 
 public:
 	Shop();
 	~Shop();
 
 public:
-	void Open(Purchasable**& _purchasables, u_int& _purchasablesCount);
+	void Open(Player* _player);
 
 private:
-	void DisplayWeapons()const;
+	// Weapon
 	Weapon* SellWeapons();
 	string* GetWeaponsName() const;
-	void DisplayConsumable()const;
+
+	//Consumable
 	string* GetConsumablesName() const;
 	Consumable* SellConsumable();
-	void AddPurchasable(Purchasable**& _purchasables, u_int& _purchasablesCount, Purchasable* _purchase);
+
+	void Close();
 };
 

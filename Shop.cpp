@@ -1,6 +1,7 @@
 #include "Shop.h"
 #include "WeaponMelee.h"
 #include "WeaponRange.h"
+#include "WeaponWheel.h"
 Shop::Shop()
 {
     weapons = new Weapon * [1]
@@ -34,13 +35,15 @@ Shop::~Shop()
     delete[] consumables;
 }
 
+
 /// <summary>
 /// Ouvre un magasin
 /// </summary>
 /// <param name="_purchasables">Purchasable qui vont etre affecter</param>
 /// <param name="_purchasablesCount">Le nb d'objet</param>
-void Shop::Open(Purchasable**& _purchasables, u_int& _purchasablesCount)
+void Shop::Open(Player* _player)
 {
+    player = _player;
     const string _shopItemNames[] =
     {
         "Armes",
@@ -51,16 +54,22 @@ void Shop::Open(Purchasable**& _purchasables, u_int& _purchasablesCount)
     do
     {
         _menuIndex = OpenMenu(_shopItemNames, _shopItemNamesCount);
+        CLEAR_SCREEN;
         Purchasable* _purchase;
         if (_menuIndex == 0)
         {
-            _purchase = SellWeapons();
-            AddPurchasable(_purchasables, _purchasablesCount, _purchase);
+            if(Weapon* _purchase = SellWeapons())
+            {
+                player->GetWheel()->AddWeapon(_purchase);
+            }
         }
         else if (_menuIndex == 1)
         {
-            _purchase = SellConsumable();
-            AddPurchasable(_purchasables, _purchasablesCount, _purchase);
+            if (Consumable* _purchase = SellConsumable())
+            {
+                //TODO IMPLEMENT
+                //player->AddConsumable(_purchase)
+            }
         }
         else
         {
@@ -68,44 +77,52 @@ void Shop::Open(Purchasable**& _purchasables, u_int& _purchasablesCount)
         }
     } while (true);
     
-
-}
-
-void Shop::DisplayWeapons() const
-{
-    for (u_int _i = 0; _i < weaponsCount; _i++)
-    {
-        DISPLAY(weapons[_i]->ToString(), true);
-    }
+    Close();
 }
 
 Weapon* Shop::SellWeapons()
 {
-    DISPLAY("Que souhaitez-vous acheter comme arme ?", true);
     string* _weaponsName = GetWeaponsName();
-    const int _weaponsIndex = OpenMenu(_weaponsName, weaponsCount);
+    Weapon* _weapon = nullptr;
+    bool _isValidIndex, _containsWeapon;
+    WeaponWheel* _wheel = player->GetWheel();
+    do
+    {
+        DISPLAY("Que souhaitez-vous acheter comme arme ?", true);
+        const int _weaponsIndex = OpenMenu(_weaponsName, weaponsCount);
+        CLEAR_SCREEN;
+        if (_weaponsIndex == weaponsCount)
+        {
+            delete[] _weaponsName;
+            return nullptr;
+        }
+        if (_isValidIndex = _weaponsIndex >= 0 && _weaponsIndex < weaponsCount)
+        {
+            _weapon = weapons[_weaponsIndex];
+        }
+        if (_containsWeapon = _wheel->ConstainsWeapon(_weapon))
+        {
+            DISPLAY("Vous posséder déja cette arme !", true);
+        }
+
+
+    } while (!_isValidIndex || _containsWeapon);
+
     delete[] _weaponsName;
-    bool _isValidIndex = _weaponsIndex >= 0 && _weaponsIndex < weaponsCount;
-    Weapon* _weapon = weapons[_weaponsIndex];
-    return _isValidIndex ? new Weapon(*_weapon) : nullptr;
+    return _weapon;
 }
 
 string* Shop::GetWeaponsName() const
 {
-    string* _newArray = new string[weaponsCount];
+    string* _weaponsName = new string[weaponsCount];
     for (u_int _i = 0; _i < weaponsCount; _i++)
     {
-        _newArray[_i] = weapons[_i]->GetName();
+        Weapon* _weapon = weapons[_i];
+        _weaponsName[_i] = (player->GetWheel()->ConstainsWeapon(_weapon) ?
+                STRIKETHROUGH_TEXT + _weapon->GetName() + RESET :
+                _weapon->GetSkin() + _weapon->GetName() + RESET);
     }
-    return _newArray;
-}
-
-void Shop::DisplayConsumable() const
-{
-    for (u_int _i = 0; _i < consumablesCount; _i++)
-    {
-        DISPLAY(consumables[_i]->ToString(), true);
-    }
+    return _weaponsName;
 }
 
 string* Shop::GetConsumablesName() const
@@ -129,18 +146,7 @@ Consumable* Shop::SellConsumable()
     return _isValidIndex ? new Consumable(*_consumable) : nullptr;
 }
 
-void Shop::AddPurchasable(Purchasable**& _purchasables, u_int& _purchasablesCount, Purchasable* _purchase)
+void Shop::Close()
 {
-    if (!_purchase) return;
-
-    Purchasable** _tempPurchasable = new Purchasable * [_purchasablesCount + 1];
-    for (u_int _i = 0; _i < _purchasablesCount; _i++)
-    {
-        _tempPurchasable[_i] = _purchasables[_i];
-    }
-
-    _tempPurchasable[_purchasablesCount] = _purchase;
-    delete _purchasables;
-    _purchasables = _tempPurchasable;
-    _purchasablesCount++;
+    player = nullptr;
 }

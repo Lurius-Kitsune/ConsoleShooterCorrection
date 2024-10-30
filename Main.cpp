@@ -12,14 +12,12 @@ int main()
     _wheel.AddWeapon(_weapon);
     _wheel.RemoveWeapon(_weapon);
 
-   
-    u_int _purchasesCount = 0;
-    Purchasable** _purchases = new Purchasable * [_purchasesCount];
+    Player* _player = new Player();
 
     Shop _shop;
-    _shop.Open(_purchases, _purchasesCount);
+    _shop.Open(_player);
 
-    delete[] _purchases;
+    delete _player;
     return EXIT_SUCCESS;
 }
 
