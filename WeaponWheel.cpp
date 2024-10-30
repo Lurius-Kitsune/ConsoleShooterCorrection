@@ -26,44 +26,39 @@ void WeaponWheel::Display() const
 
 bool WeaponWheel::AddWeapon(Weapon* _weapon)
 {
-	if(ConstainsWeapon(_weapon))
+	if (ConstainsWeapon(_weapon)) return false;
+	Weapon** _tempWeapons = new Weapon * [weaponsCount + 1];
+	for (u_int _i = 0; _i < weaponsCount; _i++)
 	{
-		Weapon** _tempWeapons = new Weapon * [weaponsCount + 1];
-		for (u_int _i = 0; _i < weaponsCount; _i++)
-		{
-			_tempWeapons[_i] = allWeapons[_i];
-		}
-
-		_tempWeapons[weaponsCount] = _weapon;
-		delete allWeapons;
-		allWeapons = _tempWeapons;
-		weaponsCount++;
-		return true;
+		_tempWeapons[_i] = allWeapons[_i];
 	}
-	return false;
+
+	_tempWeapons[weaponsCount] = _weapon;
+	delete allWeapons;
+	allWeapons = _tempWeapons;
+	weaponsCount++;
+	return true;
 }
 
 bool WeaponWheel::RemoveWeapon(Weapon* _weapon)
 {
-	if (_weapon)
+	if (!_weapon || !ConstainsWeapon(_weapon)) return false;
+
+	Weapon** _tempWeapons = new Weapon * [--weaponsCount];
+	bool _hasSkip = false;
+	for (u_int _i = 0; _i < weaponsCount; _i++)
 	{
-		Weapon** _tempWeapons = new Weapon * [--weaponsCount];
-		bool _hasSkip = false;
-		for (u_int _i = 0; _i < weaponsCount; _i++)
+		if (!_hasSkip && *allWeapons[_i] == *_weapon)
 		{
-			if (!_hasSkip && *allWeapons[_i] == *_weapon)
-			{
-				_hasSkip = true;
-				delete allWeapons[_i];
-				continue;
-			}
-			_tempWeapons[_i] = allWeapons[_i + _hasSkip];
+			_hasSkip = true;
+			delete allWeapons[_i];
+			continue;
 		}
-		delete allWeapons;
-		allWeapons = _tempWeapons;
-		return true;
+		_tempWeapons[_i] = allWeapons[_i + _hasSkip];
 	}
-	return false;
+	delete allWeapons;
+	allWeapons = _tempWeapons;
+	return true;
 }
 
 bool WeaponWheel::RemoveWeaponByIndex(const u_int& _index)
