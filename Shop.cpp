@@ -18,6 +18,17 @@ Shop::Shop()
             new Consumable(0, CT_WATER)
         };
     consumablesCount = 4;
+
+    bulletsCount = 6;
+    bullets = new Bullet * [bulletsCount]
+    {
+        new Bullet(BT_PARTITION_BULLET),
+            new Bullet(BT_ARROW),
+            new Bullet(BT_BOAT_TAIL),
+            new Bullet(BT_HOLLOW_POINT),
+            new Bullet(BT_JACKETED_HOLLOW_POINT),
+            new Bullet(BT_ROUND_NOSE)
+    };
 }
 
 Shop::~Shop()
@@ -33,6 +44,12 @@ Shop::~Shop()
         delete consumables[_i];
     }
     delete[] consumables;
+
+    for (u_int _i = 0; _i < bulletsCount; _i++)
+    {
+        delete bullets[_i];
+    }
+    delete[] bullets;
 }
 
 
@@ -47,7 +64,8 @@ void Shop::Open(Player* _player)
     const string _shopItemNames[] =
     {
         "Armes",
-        "Consomable"
+        "Consomable",
+        "Bullet"
     };
     const u_int& _shopItemNamesCount = size(_shopItemNames);
     int _menuIndex;
@@ -68,6 +86,13 @@ void Shop::Open(Player* _player)
             if (Consumable* _purchase = SellConsumable())
             {
                 player->GetInventory()->AddConsumable(_purchase);
+            }
+        }
+        else if (_menuIndex == 2)
+        {
+            if (Bullet* _purchase = SellBullet())
+            {
+                player->GetInventory()->AddBullet(_purchase);
             }
         }
         else
@@ -121,6 +146,18 @@ string* Shop::GetWeaponsName() const
                 _weapon->GetSkin() + _weapon->GetName() + RESET);
     }
     return _weaponsName;
+}
+
+string* Shop::GetBulletName() const
+{
+    //TODO
+    return nullptr;
+}
+
+Bullet* Shop::SellBullet()
+{
+    //TODO
+    return nullptr;
 }
 
 string* Shop::GetConsumablesName() const

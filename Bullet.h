@@ -15,9 +15,13 @@ struct Bullet
 {
 	BulletType type;
 
+	Bullet(const BulletType& _type);
+
 	int GetDamagesByType() const
 	{
 		return type;
 	}
+
+	string GetTypeName()const;
 };
 

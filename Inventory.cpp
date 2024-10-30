@@ -47,3 +47,13 @@ void Inventory::RemoveConsumable(const ConsumableType* _type)
 	delete consumables;
 	consumables = _tempConsumables;
 }
+
+void Inventory::AddBullet(Bullet* _consumable)
+{
+	//TODO
+}
+
+void Inventory::RemoveBullet(const BulletType* _type)
+{
+	//TODO
+}

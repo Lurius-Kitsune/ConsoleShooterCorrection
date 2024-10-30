@@ -1,5 +1,6 @@
 #pragma once
 #include "Consumable.h"
+#include "Bullet.h"
 class Inventory
 {
 	Consumable** consumables;
@@ -10,8 +11,12 @@ public:
 	~Inventory();
 
 public:
+	// Consomable
 	void AddConsumable(Consumable* _consumable);
 	void RemoveConsumable(const ConsumableType* _type);
-	void RemoveConsumable(Consumable* _consumable);
+
+	// Bullet
+	void AddBullet(Bullet* _consumable);
+	void RemoveBullet(const BulletType* _type);
 };
 

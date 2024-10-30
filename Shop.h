@@ -1,6 +1,4 @@
 #pragma once
-#include "Weapon.h"
-#include "Consumable.h"
 #include "Player.h"
 class Shop
 {
@@ -8,6 +6,8 @@ class Shop
 	u_int weaponsCount;
 	Consumable** consumables;
 	u_int consumablesCount;
+	Bullet** bullets;
+	u_int bulletsCount;
 	Player* player;
 
 public:
@@ -21,6 +21,10 @@ private:
 	// Weapon
 	Weapon* SellWeapons();
 	string* GetWeaponsName() const;
+
+	//Bullet
+	string* GetBulletName() const;
+	Bullet* SellBullet();
 
 	//Consumable
 	string* GetConsumablesName() const;
