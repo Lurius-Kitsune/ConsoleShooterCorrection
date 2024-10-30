@@ -23,8 +23,8 @@ private:
 	string* GetWeaponsName() const;
 
 	//Bullet
-	string* GetBulletName() const;
-	Bullet* SellBullet();
+	string* GetBulletsName() const;
+	Bullet* SellBullets();
 
 	//Consumable
 	string* GetConsumablesName() const;

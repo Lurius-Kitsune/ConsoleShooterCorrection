@@ -6,7 +6,7 @@ Shop::Shop()
 {
     weapons = new Weapon * [1]
         {
-            new WeaponRange("AK-47", "Pan-Pan", BLINK_TEXT  RED, 1000, 12.2f, 10, BT_PARTITION_BULLET),
+            new WeaponRange("AK-47", "Pan-Pan", BLINK_TEXT  RED, 1000, 12.2f, 10, BT_PARTITION),
         };
     weaponsCount = 1;
 
@@ -22,7 +22,7 @@ Shop::Shop()
     bulletsCount = 6;
     bullets = new Bullet * [bulletsCount]
     {
-        new Bullet(BT_PARTITION_BULLET),
+        new Bullet(BT_PARTITION),
             new Bullet(BT_ARROW),
             new Bullet(BT_BOAT_TAIL),
             new Bullet(BT_HOLLOW_POINT),
@@ -71,8 +71,8 @@ void Shop::Open(Player* _player)
     int _menuIndex;
     do
     {
-        _menuIndex = OpenMenu(_shopItemNames, _shopItemNamesCount, "Quel magasin accéder ?");
         CLEAR_SCREEN;
+        _menuIndex = OpenMenu(_shopItemNames, _shopItemNamesCount, "Quel magasin accéder ?");
         Purchasable* _purchase;
         if (_menuIndex == 0)
         {
@@ -90,7 +90,7 @@ void Shop::Open(Player* _player)
         }
         else if (_menuIndex == 2)
         {
-            if (Bullet* _purchase = SellBullet())
+            if (Bullet* _purchase = SellBullets())
             {
                 player->GetInventory()->AddBullet(_purchase);
             }
@@ -148,16 +148,27 @@ string* Shop::GetWeaponsName() const
     return _weaponsName;
 }
 
-string* Shop::GetBulletName() const
+string* Shop::GetBulletsName() const
 {
-    //TODO
-    return nullptr;
+    string* _newArray = new string[bulletsCount];
+
+    for (u_int _index = 0; _index < bulletsCount; _index++)
+    {
+        _newArray[_index] = bullets[_index]->GetTypeName();
+    }
+
+    return _newArray;
 }
 
-Bullet* Shop::SellBullet()
+Bullet* Shop::SellBullets()
 {
-    //TODO
-    return nullptr;
+    string* _bulletsName = GetBulletsName();
+    const u_int& _bulletIndex = OpenMenu(_bulletsName, bulletsCount, "Quelle item souhaitez-vous acheter ?");
+    delete[] _bulletsName;
+
+    const bool _isValidIndex = _bulletIndex >= 0 && _bulletIndex < bulletsCount;
+    Bullet* _bullet = bullets[_bulletIndex];
+    return _isValidIndex ? new Bullet(*_bullet) : nullptr;
 }
 
 string* Shop::GetConsumablesName() const

@@ -8,7 +8,7 @@ enum BulletType
 	BT_ARROW = 3,
 	BT_JACKETED_HOLLOW_POINT = 4,
 	BT_ROUND_NOSE = 5,
-	BT_PARTITION_BULLET = 6,
+	BT_PARTITION = 6,
 };
 
 struct Bullet

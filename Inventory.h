@@ -5,18 +5,28 @@ class Inventory
 {
 	Consumable** consumables;
 	u_int consumablesCount;
+	Bullet** bullets;
+	u_int bulletsCount;
 
 public:
 	Inventory();
 	~Inventory();
 
 public:
+
+	//Inventory management
+	void Open();
+
 	// Consomable
+	void OpenConsumable();
+	string* GetConsumablesName() const;
 	void AddConsumable(Consumable* _consumable);
-	void RemoveConsumable(const ConsumableType* _type);
+	void RemoveConsumableByType(const ConsumableType* _type);
 
 	// Bullet
+	void OpenBullet();
+	string* GetBulletsName() const;
 	void AddBullet(Bullet* _consumable);
-	void RemoveBullet(const BulletType* _type);
+	void RemoveBulletByType(const BulletType& _type);
 };
 
