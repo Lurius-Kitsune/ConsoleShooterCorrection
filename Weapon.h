@@ -20,7 +20,7 @@ public:
 		const int _buyingPrice, const float _accuracy);
 
 public: 
-	virtual void Attack() = 0;
+	virtual void Attack(){};
 	virtual string ToString()const override;
 	virtual void Drop();
 

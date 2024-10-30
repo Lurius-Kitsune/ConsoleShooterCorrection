@@ -67,9 +67,9 @@ int OpenMenu(const string* _options, const u_int& _maxOptions)
 {
 	int _currentIndex = 0;
 	SPACE;
+	DisplayMenu(_options, _currentIndex, _maxOptions);
 	do
 	{
-		DisplayMenu(_options, _currentIndex, _maxOptions);
 		
 		if (_kbhit())
 		{
@@ -103,6 +103,7 @@ int OpenMenu(const string* _options, const u_int& _maxOptions)
 				break;
 			}
 			CLEAR_SCREEN;
+			DisplayMenu(_options, _currentIndex, _maxOptions);
 		}
 		
 	} while (true);

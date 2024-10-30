@@ -52,17 +52,18 @@ void Shop::Open(Purchasable**& _purchasables, u_int& _purchasablesCount)
     {
         _menuIndex = OpenMenu(_shopItemNames, _shopItemNamesCount);
         Purchasable* _purchase;
-        switch (_menuIndex)
+        if (_menuIndex == 0)
         {
-        case 1:
             _purchase = SellWeapons();
             AddPurchasable(_purchasables, _purchasablesCount, _purchase);
-            break;
-        case 2:
+        }
+        else if (_menuIndex == 1)
+        {
             _purchase = SellConsumable();
             AddPurchasable(_purchasables, _purchasablesCount, _purchase);
-            break;
-        default:
+        }
+        else
+        {
             break;
         }
     } while (true);
@@ -81,10 +82,10 @@ void Shop::DisplayWeapons() const
 Weapon* Shop::SellWeapons()
 {
     DISPLAY("Que souhaitez-vous acheter comme arme ?", true);
-    string* _weaponsName = GetConsumablesName();
+    string* _weaponsName = GetWeaponsName();
     const int _weaponsIndex = OpenMenu(_weaponsName, weaponsCount);
     delete[] _weaponsName;
-    return weapons[_weaponsIndex];
+    return new Weapon(*weapons[_weaponsIndex]);
 }
 
 string* Shop::GetWeaponsName() const
@@ -121,7 +122,7 @@ Consumable* Shop::SellConsumable()
     string* _consumablesName = GetConsumablesName();
     const int _consumableIndex = OpenMenu(_consumablesName, consumablesCount);
     delete[] _consumablesName;
-    return consumables[_consumableIndex];
+    return new Consumable(*consumables[_consumableIndex]);
 }
 
 void Shop::AddPurchasable(Purchasable**& _purchasables, u_int& _purchasablesCount, Purchasable* _purchase)
