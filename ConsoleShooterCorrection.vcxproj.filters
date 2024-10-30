@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{6d44937f-8067-42c3-ab03-e655fa7d76c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Weapon">
+      <UniqueIdentifier>{5017ade1-b4c7-4e6a-9582-5360d7894079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Weapon\WeaponMelee">
+      <UniqueIdentifier>{065b0b0c-ecf4-401a-971c-0d75c0d0d317}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Weapon\WeaponRange">
+      <UniqueIdentifier>{ee6bd957-6bba-405f-920e-4a8f6a99e3a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsolMacroColor.h">
@@ -27,8 +39,17 @@
     <ClInclude Include="Random.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
+    <ClInclude Include="WeaponMelee.h">
+      <Filter>Header Files\Game\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponRange.h">
+      <Filter>Header Files\Game\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +60,15 @@
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponMelee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponRange.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

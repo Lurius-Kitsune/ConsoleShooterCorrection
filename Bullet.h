@@ -13,9 +13,7 @@ enum BulletType
 
 struct Bullet
 {
-	string name;
 	BulletType type;
-
 
 	int GetDamagesByType() const
 	{
