@@ -53,7 +53,7 @@ void Shop::Open(Player* _player)
     int _menuIndex;
     do
     {
-        _menuIndex = OpenMenu(_shopItemNames, _shopItemNamesCount, "Qu'elle magasin accéder ?");
+        _menuIndex = OpenMenu(_shopItemNames, _shopItemNamesCount, "Quel magasin accéder ?");
         CLEAR_SCREEN;
         Purchasable* _purchase;
         if (_menuIndex == 0)
@@ -67,8 +67,7 @@ void Shop::Open(Player* _player)
         {
             if (Consumable* _purchase = SellConsumable())
             {
-                //TODO IMPLEMENT
-                //player->AddConsumable(_purchase)
+                player->GetInventory()->AddConsumable(_purchase);
             }
         }
         else
