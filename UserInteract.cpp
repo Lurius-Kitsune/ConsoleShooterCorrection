@@ -47,8 +47,9 @@ bool GetBool(const string& _answersPossible)
 	return _answer;
 }
 
-void DisplayMenu(const string* _options, const int _currentIndex, const u_int& _maxOptions)
+void DisplayMenu(const string* _options, const int _currentIndex, const u_int& _maxOptions, const string& _question)
 {
+	DISPLAY(_question, _question.empty() ? false : true);
 	DISPLAY("==========ACTION==========", true);
 	for (u_int _i = 0; _i <= _maxOptions; _i++)
 	{
@@ -63,10 +64,10 @@ void DisplayMenu(const string* _options, const int _currentIndex, const u_int& _
 	DISPLAY("==========================", true);
 }
 
-int OpenMenu(const string* _options, const u_int& _maxOptions)
+int OpenMenu(const string* _options, const u_int& _maxOptions, const string& _question)
 {
 	int _currentIndex = 0;
-	DisplayMenu(_options, _currentIndex, _maxOptions);
+	DisplayMenu(_options, _currentIndex, _maxOptions, _question);
 	do
 	{
 		
@@ -102,7 +103,7 @@ int OpenMenu(const string* _options, const u_int& _maxOptions)
 				break;
 			}
 			CLEAR_SCREEN;
-			DisplayMenu(_options, _currentIndex, _maxOptions);
+			DisplayMenu(_options, _currentIndex, _maxOptions, _question);
 		}
 		
 	} while (true);

@@ -53,7 +53,7 @@ void Shop::Open(Player* _player)
     int _menuIndex;
     do
     {
-        _menuIndex = OpenMenu(_shopItemNames, _shopItemNamesCount);
+        _menuIndex = OpenMenu(_shopItemNames, _shopItemNamesCount, "Qu'elle magasin accéder ?");
         CLEAR_SCREEN;
         Purchasable* _purchase;
         if (_menuIndex == 0)
@@ -88,8 +88,7 @@ Weapon* Shop::SellWeapons()
     WeaponWheel* _wheel = player->GetWheel();
     do
     {
-        DISPLAY("Que souhaitez-vous acheter comme arme ?", true);
-        const int _weaponsIndex = OpenMenu(_weaponsName, weaponsCount);
+        const int _weaponsIndex = OpenMenu(_weaponsName, weaponsCount, "Que souhaitez-vous acheter comme arme ?");
         CLEAR_SCREEN;
         if (_weaponsIndex == weaponsCount)
         {
@@ -137,9 +136,8 @@ string* Shop::GetConsumablesName() const
 
 Consumable* Shop::SellConsumable()
 {
-    DISPLAY("Que souhaitez-vous acheter comme consomable ?", true);
     string* _consumablesName = GetConsumablesName();
-    const int _consumableIndex = OpenMenu(_consumablesName, consumablesCount);
+    const int _consumableIndex = OpenMenu(_consumablesName, consumablesCount, "Que souhaitez-vous acheter comme consomable ?");
     delete[] _consumablesName;
     bool _isValidIndex = _consumableIndex >= 0 && _consumableIndex < consumablesCount;
     Consumable* _consumable = consumables[_consumableIndex];
