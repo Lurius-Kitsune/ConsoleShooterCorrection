@@ -12,12 +12,12 @@
 //          => Régénération via des consommables
 //          => Attack / Reload / Consume / SwitchWeapon / Dash / Flee
 
-// Consumable => Type / RegenValue
+// Consumable => Type / RegenValue / Purchase price
 
 // Armes => Mélée -> Knife / Fists
 //         => Distance -> Arc / Pompe / Mitraillette / Pistolet / Sniper
 
-// Arme => Name / Description / Buying price / Skin(color) / Accuracy
+// Arme => Name / Description / Purchase price / Skin(color) / Accuracy
 // Mélée => Critical luck / Critic damages / Damages
 // Distance => MagazineSize / CurrentMagazineSize
 // Bullet => Name / BulletType / Damages

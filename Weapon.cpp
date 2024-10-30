@@ -1,11 +1,11 @@
 #include "Weapon.h"
 
-Weapon::Weapon(const string& _name, const string& _description, const int _buyingPrice, 
-	const string& _skin, const float _accuracy)
+Weapon::Weapon(const string& _name, const string& _description, const string& _skin, 
+	const int _buyingPrice, const float _accuracy)
 {
 	name = _name;
 	description = _description;
-	buyingPrice = _buyingPrice;
+	purchasePrice = _buyingPrice;
 	skin = _skin;
 	accuracy = _accuracy;
 }
@@ -14,7 +14,7 @@ string Weapon::ToString()
 {
 	return "[Weapon] :" + (this ? name +
 		"\n\t->" + description + 
-		"\n\t->" + to_string(buyingPrice) + "€" +
+		"\n\t->" + to_string(purchasePrice) + "€" +
 		+"\n\t->" + skin +
 		+"\n\t->" + to_string(accuracy)
 		: "NONE");

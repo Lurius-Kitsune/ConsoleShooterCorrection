@@ -21,9 +21,12 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Consumable.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="Purchasable.h" />
     <ClInclude Include="Random.h" />
+    <ClInclude Include="Shop.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WeaponRange.h" />
     <ClInclude Include="WeaponMelee.h" />
@@ -32,8 +35,11 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Purchasable.cpp" />
+    <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WeaponRange.cpp" />
     <ClCompile Include="WeaponMelee.cpp" />

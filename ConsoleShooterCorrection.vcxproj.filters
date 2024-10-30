@@ -54,6 +54,15 @@
     <ClInclude Include="WeaponWheel.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="Consumable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Purchasable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -79,6 +88,15 @@
     </ClCompile>
     <ClCompile Include="Color.cpp">
       <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Consumable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Purchasable.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

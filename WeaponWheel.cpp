@@ -54,6 +54,7 @@ bool WeaponWheel::RemoveWeapon(Weapon* _weapon)
 			if (!_hasSkip && *allWeapons[_i] == *_weapon)
 			{
 				_hasSkip = true;
+				delete allWeapons[_i];
 				continue;
 			}
 			_tempWeapons[_i] = allWeapons[_i + _hasSkip];

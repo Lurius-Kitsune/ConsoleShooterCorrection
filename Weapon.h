@@ -1,10 +1,10 @@
 #pragma once
-#include "Macro.h"
-class Weapon
+#include "Purchasable.h"
+class Weapon : public Purchasable
 {
 	string name;
 	string description;
-	int buyingPrice;
+	int purchasePrice;
 	string skin; // color
 	float accuracy;
 
@@ -16,8 +16,8 @@ public:
 	}
 
 	//Weapon() = default;
-	Weapon(const string& _name, const string& _description, const int _buyingPrice,
-		const string& _skin, const float _accuracy);
+	Weapon(const string& _name, const string& _description, const string& _skin,
+		const int _buyingPrice, const float _accuracy);
 
 public: 
 	virtual void Attack() = 0;
