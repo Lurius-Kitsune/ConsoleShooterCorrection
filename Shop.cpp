@@ -85,7 +85,9 @@ Weapon* Shop::SellWeapons()
     string* _weaponsName = GetWeaponsName();
     const int _weaponsIndex = OpenMenu(_weaponsName, weaponsCount);
     delete[] _weaponsName;
-    return new Weapon(*weapons[_weaponsIndex]);
+    bool _isValidIndex = _weaponsIndex >= 0 && _weaponsIndex < weaponsCount;
+    Weapon* _weapon = weapons[_weaponsIndex];
+    return _isValidIndex ? new Weapon(*_weapon) : nullptr;
 }
 
 string* Shop::GetWeaponsName() const
@@ -122,18 +124,22 @@ Consumable* Shop::SellConsumable()
     string* _consumablesName = GetConsumablesName();
     const int _consumableIndex = OpenMenu(_consumablesName, consumablesCount);
     delete[] _consumablesName;
-    return new Consumable(*consumables[_consumableIndex]);
+    bool _isValidIndex = _consumableIndex >= 0 && _consumableIndex < consumablesCount;
+    Consumable* _consumable = consumables[_consumableIndex];
+    return _isValidIndex ? new Consumable(*_consumable) : nullptr;
 }
 
 void Shop::AddPurchasable(Purchasable**& _purchasables, u_int& _purchasablesCount, Purchasable* _purchase)
 {
+    if (!_purchase) return;
+
     Purchasable** _tempPurchasable = new Purchasable * [_purchasablesCount + 1];
-    for (u_int _i = 0; _i < weaponsCount; _i++)
+    for (u_int _i = 0; _i < _purchasablesCount; _i++)
     {
         _tempPurchasable[_i] = _purchasables[_i];
     }
 
-    _tempPurchasable[weaponsCount] = _purchase;
+    _tempPurchasable[_purchasablesCount] = _purchase;
     delete _purchasables;
     _purchasables = _tempPurchasable;
     _purchasablesCount++;
