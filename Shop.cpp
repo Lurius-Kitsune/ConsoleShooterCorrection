@@ -14,16 +14,16 @@ Shop::Shop()
 
 	purchasableItems = new PurchasableItem * [purchasableItemsCount]
         {
-                new Bullet(BT_PARTITION),
-                new Bullet(BT_ARROW),
+                new Bullet(0, BT_PARTITION),
+                new Bullet(0, BT_ARROW),
                 new Consumable(0, CT_MILK),
                 new Consumable(0, CT_APPLE),
-                new Bullet(BT_BOAT_TAIL),
-                new Bullet(BT_HOLLOW_POINT),
+                new Bullet(0, BT_BOAT_TAIL),
+                new Bullet(0, BT_HOLLOW_POINT),
                 new Consumable(0, CT_SPINACH),
                 new Consumable(0, CT_WATER),
-                new Bullet(BT_JACKETED_HOLLOW_POINT),
-                new Bullet(BT_ROUND_NOSE)
+                new Bullet(0, BT_JACKETED_HOLLOW_POINT),
+                new Bullet(0, BT_ROUND_NOSE)
         };
 }
 
@@ -140,7 +140,7 @@ string* Shop::GetWeaponsName() const
 Bullet* Shop::SellBullets()
 {
     u_int _bulletsCount = 0;
-    Bullet* _type = new Bullet(BT_ARROW);
+    Bullet* _type = new Bullet(0, BT_ARROW);
     string* _bulletsName = GetPurchasableItemsName(_type, _bulletsCount);
     const u_int& _bulletIndex = OpenMenu(_bulletsName, _bulletsCount, "Quelle item souhaitez-vous acheter ?");
     delete[] _bulletsName;
@@ -175,7 +175,8 @@ string* Shop::GetPurchasableItemsName(PurchasableItem* _type, u_int& _arrayCount
         if ((_isConsumable && dynamic_cast<Consumable*>(purchasableItems[_i])) ||
             (!_isConsumable && dynamic_cast<Bullet*>(purchasableItems[_i])))
         {
-            _newArray[_arrayCount++] = purchasableItems[_i]->GetTypeName();
+            _newArray[_arrayCount++] = purchasableItems[_i]->ToString() 
+                + " | Price : " GREEN + to_string(purchasableItems[_i]->GetPurchasePrice()) + "€" RESET;
         }
     }
     return _newArray;

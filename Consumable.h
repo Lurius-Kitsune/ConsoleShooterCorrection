@@ -1,16 +1,8 @@
 #pragma once
 #include "PurchasableItem.h"
-enum ConsumableType 
-{
-	CT_WATER,
-	CT_MILK,
-	CT_APPLE,
-	CT_SPINACH
-};
 
 struct Consumable : public PurchasableItem
 {
-	int purchasePrice;
 	ConsumableType type;
 
 	int GetRegenValue() const

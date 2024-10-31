@@ -1,6 +1,7 @@
 #include "Bullet.h"
 
-Bullet::Bullet(const BulletType& _type)
+Bullet::Bullet(const int _purchasePrice, const BulletType& _type)
+	: PurchasableItem(_purchasePrice)
 {
 	type = _type;
 }
@@ -37,5 +38,5 @@ string Bullet::GetTypeName() const
 
 string Bullet::ToString() const
 {
-	return GetTypeName();
+	return GetTypeName() + "-> " + RED + to_string(GetDamages()) + RESET + " dgt";
 }
