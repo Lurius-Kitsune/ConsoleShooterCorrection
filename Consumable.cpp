@@ -1,7 +1,10 @@
 #include "Consumable.h"
 
 Consumable::Consumable(const int _purcharsePrice, const ConsumableType& _type)
-	: Purchasable(_purcharsePrice, PT_CONSUMABLE, AllPurchasableType(_type)) {}
+	: Purchasable(_purcharsePrice, PT_CONSUMABLE, AllPurchasableType(_type)) 
+{
+	type = _type;
+}
 
 string Consumable::GetTypeName()const
 {

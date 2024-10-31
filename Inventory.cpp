@@ -26,8 +26,8 @@ void Inventory::Open()
 {
 	const string _inventoryCategoriesNames[] =
 	{
-		"Consomable",
-		"Bullet"
+		"Munition",
+		"Consomable"
 	};
 
 	const u_int& _inventoryCategoriesCount = size(_inventoryCategoriesNames);
@@ -75,7 +75,8 @@ void Inventory::OpenType(const PurchasableType& _category)
 	}
 	else
 	{
-		DISPLAY(RED "[INFO] Tu ne possède aucun consomable" RESET, true);
+		string _noneOf = _category == 0 ? "aucune munitions" : "aucun consomable";
+		DISPLAY(RED "[INFO] Tu ne possède " + _noneOf + RESET, true);
 	}
 }
 

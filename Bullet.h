@@ -4,6 +4,8 @@
 
 struct Bullet : public Purchasable
 {
+	BulletType type;
+
 	Bullet(const int _purchasePrice, const BulletType& _type);
 
 	int GetDamages() const
