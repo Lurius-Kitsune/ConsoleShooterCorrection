@@ -2,7 +2,7 @@
 #include "Consumable.h"
 #include "Bullet.h"
 
-#define InventorySize GetPurchasablesSize(purchasablesCount)
+#define InventorySize GetPurchasablesSize(PT_COUNT)
 
 struct InventoryData
 {
@@ -20,10 +20,9 @@ class Inventory
 {
 	Purchasable** purchasables;
 	InventoryData* allData;
-	u_int purchasablesCount;
 
 private:
-	u_int GetPurchasablesSize(const u_int& _categoryIndex)const
+	u_int GetPurchasablesSize(const PurchasableType& _categoryIndex)const
 	{
 		u_int _size = 0;
 		for (u_int _i = 0; _i < _categoryIndex; _i++)
@@ -40,9 +39,9 @@ public:
 
 	//Inventory management
 	void Open();
-	void OpenType(const u_int& _categoryIndex);
+	void OpenType(const PurchasableType& _categoryIndex);
 	string* GetNamesOfType(const u_int& _indexToLook) const;
-	void Add(const u_int& _categoryIndex, Purchasable* _purchase);
+	void Add(const PurchasableType& _categoryIndex, Purchasable* _purchase);
 	bool Remove(const PurchasableType& _purchaseType, const AllPurchasableType& _type);
 
 

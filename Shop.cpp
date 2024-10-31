@@ -74,14 +74,14 @@ void Shop::Open(Player* _player)
         {
             if (Consumable* _purchase = SellConsumable())
             {
-                player->GetInventory()->AddConsumable(_purchase);
+                player->GetInventory()->Add(PT_CONSUMABLE, _purchase);
             }
         }
         else if (_menuIndex == 2)
         {
             if (Bullet* _purchase = SellBullets())
             {
-                player->GetInventory()->AddBullet(_purchase);
+                player->GetInventory()->Add(PT_BULLET, _purchase);
             }
         }
         else

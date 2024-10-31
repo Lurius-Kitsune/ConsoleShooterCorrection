@@ -2,7 +2,6 @@
 
 Inventory::Inventory()
 {
-	purchasablesCount = 2;
 	allData = new InventoryData[2]
 	{
 		InventoryData("Consomable"),
@@ -49,10 +48,10 @@ void Inventory::Open()
 
 }
 
-void Inventory::OpenType(const u_int& _categoryIndex)
+void Inventory::OpenType(const PurchasableType& _category)
 {
 	const u_int& _purchasablesSize = InventorySize;
-	const u_int& _indexToLook = GetPurchasablesSize(_categoryIndex);
+	const u_int& _indexToLook = GetPurchasablesSize(_category);
 	if(_indexToLook > 0)
 	{
 		string* _namesOfType = GetNamesOfType(_indexToLook);
@@ -90,11 +89,11 @@ string* Inventory::GetNamesOfType(const u_int& _indexToLook) const
 	return _newArray;
 }
 
-void Inventory::Add(const u_int& _categoryIndex, Purchasable* _purchase)
+void Inventory::Add(const PurchasableType& _category, Purchasable* _purchase)
 {
 	const u_int& _inventorySize = InventorySize;
 	Purchasable** _tempPurchasable = new Purchasable *[_inventorySize + 1];
-	const u_int& _indexToAdd = GetPurchasablesSize(_categoryIndex);
+	const u_int& _indexToAdd = GetPurchasablesSize(_category);
 	bool _hasSet = false;
 
 	for (u_int _i = 0; _i < _inventorySize; _i++)
@@ -109,7 +108,7 @@ void Inventory::Add(const u_int& _categoryIndex, Purchasable* _purchase)
 
 	delete purchasables;
 	purchasables = _tempPurchasable;
-	allData[_categoryIndex].count++;
+	allData[_category].count++;
 }
 
 bool Inventory::Remove(const PurchasableType& _purchaseType, const AllPurchasableType& _type)
