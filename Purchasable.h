@@ -22,6 +22,16 @@ union AllPurchasableType
 {
 	BulletType bulletType;
 	ConsumableType consumableType;
+
+	AllPurchasableType(BulletType _bulletType)
+	{
+		bulletType = _bulletType;
+	}
+
+	AllPurchasableType(ConsumableType _consumableType)
+	{
+		consumableType = _consumableType;
+	}
 };
 
 enum PurchasableType
@@ -36,6 +46,8 @@ enum PurchasableType
 struct Purchasable
 {
 	int purchasePrice;
+	PurchasableType type;
+	AllPurchasableType allTypes;
 
 	virtual int GetPurchasePrice() const
 	{
@@ -43,9 +55,10 @@ struct Purchasable
 	}
 
 	Purchasable() = default;
-	Purchasable(const int _purchasePrice);
+	Purchasable(const int _purchasePrice, const PurchasableType& _type, const AllPurchasableType& _allTypes);
 
 	virtual ~Purchasable() = default;
+	u_int GetType()const;
 	virtual string ToString()const = 0;
 	virtual string GetTypeName()const = 0;
 };

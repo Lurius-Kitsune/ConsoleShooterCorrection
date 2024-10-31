@@ -133,12 +133,36 @@ bool Inventory::Remove(const PurchasableType& _purchaseType, const AllPurchasabl
 		}
 		_tempPurchasable[_i] = purchasables[_i + _hasSkip];
 	}
+	delete _purchase;
 	delete purchasables;
 	purchasables = _tempPurchasable;
 	return true;
 }
 
-u_int Inventory::GetIndexByType(const PurchasableType& _purchaseType, const AllPurchasableType& _type) const
+u_int Inventory::GetIndexByType(const PurchasableType& _purchaseType, const AllPurchasableType& _allType) const
 {
-	return u_int();
+	const u_int& _startIndex = _purchaseType - 1 < 0 ? 0 : GetPurchasablesSize(PurchasableType(_purchaseType-1));
+	const u_int& _stopIndex = GetPurchasablesSize(_purchaseType);
+	const int _typeValue = GetTypeValue(_purchaseType, _allType);
+	for (u_int _i = _startIndex; _i < _stopIndex; _i++)
+	{
+		if (purchasables[_i]->GetType() == _typeValue)
+		{
+			return _i;
+		}
+	}
+	return -1;
+}
+
+int Inventory::GetTypeValue(const PurchasableType& _purchaseType, const AllPurchasableType& _allType) const
+{
+	if (_purchaseType == PT_BULLET)
+	{
+		return _allType.bulletType;
+	}
+	else if (_purchaseType == PT_CONSUMABLE)
+	{
+		return _allType.consumableType;
+	}
+	return -1;
 }

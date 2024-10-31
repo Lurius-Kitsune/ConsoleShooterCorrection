@@ -47,5 +47,6 @@ public:
 
 private:
 	u_int GetIndexByType(const PurchasableType& _purchaseType, const AllPurchasableType& _type) const;
+	int GetTypeValue(const PurchasableType& _purchaseType, const AllPurchasableType& _type)const;
 };
 

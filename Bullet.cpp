@@ -1,10 +1,7 @@
 #include "Bullet.h"
 
 Bullet::Bullet(const int _purchasePrice, const BulletType& _type)
-	: Purchasable(_purchasePrice)
-{
-	type = _type;
-}
+	: Purchasable(_purchasePrice, PT_BULLET, AllPurchasableType(_type)) {}
 
 
 string Bullet::GetTypeName() const

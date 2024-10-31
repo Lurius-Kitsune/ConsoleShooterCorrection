@@ -3,7 +3,6 @@
 
 struct Consumable : public Purchasable
 {
-	ConsumableType type;
 
 	int GetRegenValue() const
 	{
