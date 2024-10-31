@@ -66,7 +66,7 @@ void DisplayMenu(const string* _options, const int _currentIndex, const u_int& _
 
 int OpenMenu(const string* _options, const u_int& _maxOptions, const string& _question)
 {
-	int _currentIndex = 0;
+	u_int _currentIndex = 0;
 	DisplayMenu(_options, _currentIndex, _maxOptions, _question);
 	do
 	{
@@ -84,13 +84,7 @@ int OpenMenu(const string* _options, const u_int& _maxOptions, const string& _qu
 				return _currentIndex;
 				// Si la touche est fleche du haut, alors _choiceIndex--
 			case 72:
-
-				_currentIndex--;
-				// Si _choiceIndex < 0, alors _choiceIndex = _maxChoice-1 (car tableau)
-				if (_currentIndex < 0)
-				{
-					_currentIndex = (_currentIndex <= 0 ? _maxOptions : _currentIndex-1);
-				}
+				_currentIndex = (_currentIndex <= 0 ? _maxOptions : _currentIndex-1);
 				break;
 				// Si la touche est fleche du bas, alors _choiceIndex++
 			case 80:
