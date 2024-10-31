@@ -21,7 +21,7 @@ enum ConsumableType
 union AllPurchasableType
 {
 	BulletType bulletType;
-	ConsumableType consumableType
+	ConsumableType consumableType;
 };
 
 enum PurchasableType
@@ -33,7 +33,7 @@ enum PurchasableType
 };
 
 // Todo Remove
-struct PurchasableItem
+struct Purchasable
 {
 	int purchasePrice;
 
@@ -42,10 +42,10 @@ struct PurchasableItem
 		return purchasePrice;
 	}
 
-	PurchasableItem() = default;
-	PurchasableItem(const int _purchasePrice);
+	Purchasable() = default;
+	Purchasable(const int _purchasePrice);
 
-	virtual ~PurchasableItem() = default;
+	virtual ~Purchasable() = default;
 	virtual string ToString()const = 0;
 	virtual string GetTypeName()const = 0;
 };

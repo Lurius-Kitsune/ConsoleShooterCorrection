@@ -12,7 +12,7 @@ Shop::Shop()
 
 	purchasableItemsCount = 10;
 
-	purchasableItems = new PurchasableItem * [purchasableItemsCount]
+	purchasableItems = new Purchasable * [purchasableItemsCount]
         {
                 new Bullet(0, BT_PARTITION),
                 new Bullet(0, BT_ARROW),
@@ -165,7 +165,7 @@ Consumable* Shop::SellConsumable()
     return _isValidIndex ? new Consumable(*_consumable) : nullptr;
 }
 
-string* Shop::GetPurchasableItemsName(PurchasableItem* _type, u_int& _arrayCount) const
+string* Shop::GetPurchasableItemsName(Purchasable* _type, u_int& _arrayCount) const
 {
 	bool _isConsumable = dynamic_cast<Consumable*>(_type);
     string* _newArray = new string[purchasableItemsCount];

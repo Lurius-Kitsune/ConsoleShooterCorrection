@@ -18,7 +18,7 @@ struct InventoryData
 
 class Inventory
 {
-	PurchasableItem** purchasables;
+	Purchasable** purchasables;
 	InventoryData* allData;
 	u_int purchasablesCount;
 
@@ -42,7 +42,7 @@ public:
 	void Open();
 	void OpenType(const u_int& _categoryIndex);
 	string* GetNamesOfType(const u_int& _indexToLook) const;
-	void Add(const u_int& _categoryIndex, PurchasableItem* _purchase);
+	void Add(const u_int& _categoryIndex, Purchasable* _purchase);
 	bool Remove(const PurchasableType& _purchaseType, const AllPurchasableType& _type);
 
 

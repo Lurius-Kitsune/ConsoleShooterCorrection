@@ -1,7 +1,7 @@
 #pragma once
-#include "PurchasableItem.h"
+#include "Purchasable.h"
 
-struct Consumable : public PurchasableItem
+struct Consumable : public Purchasable
 {
 	ConsumableType type;
 

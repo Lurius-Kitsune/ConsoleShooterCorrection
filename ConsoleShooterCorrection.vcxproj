@@ -26,7 +26,7 @@
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="PurchasableItem.h" />
+    <ClInclude Include="Purchasable.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="UserInteract.h" />
@@ -43,7 +43,7 @@
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PurchasableItem.cpp" />
+    <ClCompile Include="Purchasable.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="UserInteract.cpp" />
     <ClCompile Include="Weapon.cpp" />

@@ -8,12 +8,12 @@ Inventory::Inventory()
 		InventoryData("Consomable"),
 		InventoryData("Munition"),
 	};
-	purchasables = new PurchasableItem * [0];
+	purchasables = new Purchasable * [0];
 }
 
 Inventory::~Inventory()
 {
-	const u_int& _purchasablesSize = GetPurchasablesSize();
+	const u_int& _purchasablesSize = InventorySize;
 	for (u_int _i = 0; _i < _purchasablesSize; _i++)
 	{
 		delete purchasables[_i];
@@ -59,13 +59,14 @@ void Inventory::OpenType(const u_int& _categoryIndex)
 		const u_int& _consumablesIndex = OpenMenu(_namesOfType, _indexToLook, "Quelle item souhaitez-vous acheter ?");
 		delete[] _namesOfType;
 
+		// Todo Upgrade it!
 		Consumable* _consumable = dynamic_cast<Consumable*>(purchasables[_indexToLook + _consumablesIndex]);
 		do
 		{
 			if (_consumablesIndex < _indexToLook)
 			{
 				DISPLAY("Using consumable: " + _consumable->GetTypeName(), true);
-				RemoveConsumableByType(&_consumable->type);
+				//Remove(&_consumable->type);
 			}
 			else
 			{
@@ -89,10 +90,10 @@ string* Inventory::GetNamesOfType(const u_int& _indexToLook) const
 	return _newArray;
 }
 
-void Inventory::Add(const u_int& _categoryIndex, PurchasableItem* _purchase)
+void Inventory::Add(const u_int& _categoryIndex, Purchasable* _purchase)
 {
 	const u_int& _inventorySize = InventorySize;
-	PurchasableItem** _tempPurchasable = new PurchasableItem *[_inventorySize + 1];
+	Purchasable** _tempPurchasable = new Purchasable *[_inventorySize + 1];
 	const u_int& _indexToAdd = GetPurchasablesSize(_categoryIndex);
 	bool _hasSet = false;
 
@@ -120,9 +121,9 @@ bool Inventory::Remove(const PurchasableType& _purchaseType, const AllPurchasabl
 
 	// Todo Check index
 
-	PurchasableItem** _tempPurchasable = new PurchasableItem * [_inventorySize - 1];
+	Purchasable** _tempPurchasable = new Purchasable * [_inventorySize - 1];
 	bool _hasSkip = false;
-	PurchasableItem* _purchase;
+	Purchasable* _purchase;
 	for (u_int _i = 0; _i < _inventorySize; _i++)
 	{
 		if (!_hasSkip && _i == _indexToRemove)

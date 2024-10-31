@@ -1,8 +1,8 @@
 #pragma once
 #include "Macro.h"
-#include "PurchasableItem.h"
+#include "Purchasable.h"
 
-struct Bullet : public PurchasableItem
+struct Bullet : public Purchasable
 {
 	BulletType type;
 

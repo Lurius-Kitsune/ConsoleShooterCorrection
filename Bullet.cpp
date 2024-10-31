@@ -1,7 +1,7 @@
 #include "Bullet.h"
 
 Bullet::Bullet(const int _purchasePrice, const BulletType& _type)
-	: PurchasableItem(_purchasePrice)
+	: Purchasable(_purchasePrice)
 {
 	type = _type;
 }
