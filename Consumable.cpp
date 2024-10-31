@@ -13,7 +13,7 @@ string Consumable::GetTypeName()const
 	case CT_WATER:
 		return "Water";
 	case CT_MILK:
-		return "Le bon lait de Marguerite";
+		return "MILK";
 	case CT_APPLE:
 		return "Pomme";
 	case CT_SPINACH:

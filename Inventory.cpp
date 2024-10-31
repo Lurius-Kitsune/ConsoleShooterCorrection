@@ -10,6 +10,12 @@ Inventory::Inventory()
 	purchasables = new Purchasable * [0];
 }
 
+Inventory::Inventory(Purchasable** _purchasables, InventoryData* _inventoryData)
+{
+	purchasables = _purchasables;
+	allData = _inventoryData;
+}
+
 Inventory::~Inventory()
 {
 	const u_int& _purchasablesSize = InventorySize;
@@ -119,8 +125,6 @@ bool Inventory::Remove(const PurchasableType& _purchaseType, const AllPurchasabl
 
 	if (_indexToRemove == _inventorySize) return false;
 
-	// Todo Check index
-
 	Purchasable** _tempPurchasable = new Purchasable * [_inventorySize - 1];
 	bool _hasSkip = false;
 	Purchasable* _purchase = nullptr;
@@ -138,6 +142,29 @@ bool Inventory::Remove(const PurchasableType& _purchaseType, const AllPurchasabl
 	delete purchasables;
 	purchasables = _tempPurchasable;
 	return true;
+}
+
+Purchasable* Inventory::GetPurchasableByIndex(const PurchasableType _purchaseType, const u_int& _index) const
+{
+	const u_int& _typeCount = GetPurchasablesCountByType(_purchaseType);
+	const u_int& _startIndex = _purchaseType - 1 < 0 ? 0 : GetPurchasablesSize(PurchasableType(_purchaseType - 1));
+	if (_index < 0 || _index >= _typeCount) return nullptr;
+
+	return purchasables[_startIndex + _index];
+}
+
+ string* Inventory::GetPurchasablesName(const PurchasableType _purchaseType) const
+{
+	 const u_int& _startIndex = _purchaseType - 1 < 0 ? 0 : GetPurchasablesSize(PurchasableType(_purchaseType - 1));
+	 const u_int& _stopIndex = GetPurchasablesSize(_purchaseType);
+	 const int _typeValue = _purchaseType;
+	 const u_int& _arraysize = _stopIndex - _startIndex;
+	 string* _newArray = new string[_arraysize];
+	 for (u_int _i = 0; _i < _arraysize; _i++)
+	 {
+		 _newArray[_i] = purchasables[_startIndex+_i]->ToString();
+	 }
+	 return _newArray;
 }
 
 u_int Inventory::GetIndexByType(const PurchasableType& _purchaseType, const AllPurchasableType& _allType) const

@@ -1,5 +1,6 @@
 #pragma once
 #include "UserInteract.h"
+
 class Weapon
 {
 	string name;
