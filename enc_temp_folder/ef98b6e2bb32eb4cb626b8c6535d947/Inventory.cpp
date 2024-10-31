@@ -58,14 +58,16 @@ void Inventory::OpenType(const PurchasableType& _category)
 {
 	const u_int _sizeOfCategory = GetPurchasablesCountByType(_category);
 	if(_sizeOfCategory > 0)
-	{	
+	{
+		const u_int& _indexToLook = _category - 1 < 0 ? 0 : GetPurchasablesSize(PurchasableType(_category - 1));
+		
 		string* _namesOfType = GetPurchasablesName(_category);
-		const u_int& _purchaseIndex = OpenMenu(_namesOfType, _sizeOfCategory, "Quel type souhaite-tu voir ?");
+		const u_int& _consumablesIndex = OpenMenu(_namesOfType, _sizeOfCategory, "Quel type souhaite-tu voir ?");
 		delete[] _namesOfType;
 		// Todo Upgrade it!
 		do
 		{
-			if (_purchaseIndex < _sizeOfCategory)
+			if (_consumablesIndex < _indexToLook)
 			{
 				DISPLAY("Using consumable: " , true);
 				//Remove(&_consumable->type);

@@ -55,7 +55,6 @@ public:
 	//Inventory management
 	void Open();
 	void OpenType(const PurchasableType& _categoryIndex);
-	string* GetNamesOfType(const u_int& _indexToLook) const;
 	void Add(const PurchasableType& _categoryIndex, Purchasable* _purchase);
 	bool Remove(const PurchasableType& _purchaseType, const AllPurchasableType& _type);
 
