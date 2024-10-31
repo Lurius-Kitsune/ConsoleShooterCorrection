@@ -36,9 +36,9 @@ void Inventory::Open()
 	{
 		_menuIndex = OpenMenu(_inventoryCategoriesNames, _inventoryCategoriesCount, "Quel magasin accéder ?");
 		CLEAR_SCREEN;
-		if (_menuIndex >= 0 && _menuIndex < purchasablesCount)
+		if (_menuIndex >= 0 && _menuIndex < PT_COUNT)
 		{
-			OpenType(_menuIndex);
+			OpenType(PurchasableType(_menuIndex));
 		}
 		else
 		{
@@ -135,6 +135,7 @@ bool Inventory::Remove(const PurchasableType& _purchaseType, const AllPurchasabl
 	}
 	delete purchasables;
 	purchasables = _tempPurchasable;
+	return true;
 }
 
 u_int Inventory::GetIndexByType(const PurchasableType& _purchaseType, const AllPurchasableType& _type) const
