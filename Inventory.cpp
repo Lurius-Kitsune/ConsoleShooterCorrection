@@ -122,7 +122,7 @@ bool Inventory::Remove(const PurchasableType& _purchaseType, const AllPurchasabl
 
 	Purchasable** _tempPurchasable = new Purchasable * [_inventorySize - 1];
 	bool _hasSkip = false;
-	Purchasable* _purchase;
+	Purchasable* _purchase = nullptr;
 	for (u_int _i = 0; _i < _inventorySize; _i++)
 	{
 		if (!_hasSkip && _i == _indexToRemove)

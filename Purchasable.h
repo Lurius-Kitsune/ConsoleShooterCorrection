@@ -23,11 +23,15 @@ union AllPurchasableType
 	BulletType bulletType;
 	ConsumableType consumableType;
 
+	AllPurchasableType()
+	{
+		bulletType = BT_ARROW;
+	}
+
 	AllPurchasableType(BulletType _bulletType)
 	{
 		bulletType = _bulletType;
 	}
-
 	AllPurchasableType(ConsumableType _consumableType)
 	{
 		consumableType = _consumableType;
