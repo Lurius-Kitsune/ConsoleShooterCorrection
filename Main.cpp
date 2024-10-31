@@ -27,6 +27,7 @@ int main()
     do
     {
         int _menuIndex = OpenMenu(_menu, _menuCount, "Quel Faire ?");
+        CLEAR_SCREEN;
 		if (_menuIndex == 0)
 		{
 			_shop.Open(_player);

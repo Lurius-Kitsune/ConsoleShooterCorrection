@@ -25,6 +25,9 @@
     <Filter Include="Header Files\Game\Weapon\WeaponRange">
       <UniqueIdentifier>{ee6bd957-6bba-405f-920e-4a8f6a99e3a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\Entity">
+      <UniqueIdentifier>{9f66847c-c862-4d17-ab84-6763b7166fee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h">
@@ -54,16 +57,10 @@
     <ClInclude Include="WeaponWheel.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="PurchasableItem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UserInteract.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Shop.h">
@@ -71,6 +68,15 @@
     </ClInclude>
     <ClInclude Include="Consumable.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Purchasable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Game\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\Game\Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -104,9 +110,6 @@
     <ClCompile Include="Shop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PurchasableItem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="UserInteract.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
@@ -114,6 +117,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Purchasable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

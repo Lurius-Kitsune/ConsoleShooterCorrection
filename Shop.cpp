@@ -60,8 +60,8 @@ void Shop::Open(Player* _player)
     int _menuIndex;
     do
     {
-        CLEAR_SCREEN;
         _menuIndex = OpenMenu(_shopItemNames, _shopItemNamesCount, "Quel magasin accéder ?");
+        CLEAR_SCREEN;
         if (_menuIndex == 0)
         {
             if(Weapon* _purchase = SellWeapons())
@@ -143,6 +143,7 @@ Purchasable* Shop::Sell(const PurchasableType& _purchaseType)
     string* _purchasesName = inventory->GetPurchasablesName(_purchaseType);
 
     const u_int& _purchaseIndex = OpenMenu(_purchasesName, inventory->GetPurchasablesCountByType(_purchaseType), "Quelle item souhaitez-vous acheter ?");
+    CLEAR_SCREEN;
     delete[] _purchasesName;
 
     return inventory->GetPurchasableByIndex(_purchaseType ,_purchaseIndex);

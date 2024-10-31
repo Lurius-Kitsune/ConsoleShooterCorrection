@@ -40,7 +40,7 @@ void Inventory::Open()
 	int _menuIndex;
 	do
 	{
-		_menuIndex = OpenMenu(_inventoryCategoriesNames, _inventoryCategoriesCount, "Quel magasin accéder ?");
+		_menuIndex = OpenMenu(_inventoryCategoriesNames, _inventoryCategoriesCount, "Quel inventaire accéder ?");
 		CLEAR_SCREEN;
 		if (_menuIndex >= 0 && _menuIndex < PT_COUNT)
 		{
@@ -61,6 +61,7 @@ void Inventory::OpenType(const PurchasableType& _category)
 	{	
 		string* _namesOfType = GetPurchasablesName(_category);
 		const u_int& _purchaseIndex = OpenMenu(_namesOfType, _sizeOfCategory, "Quel type souhaite-tu voir ?");
+		CLEAR_SCREEN;
 		delete[] _namesOfType;
 		// Todo Upgrade it!
 		do
@@ -69,6 +70,7 @@ void Inventory::OpenType(const PurchasableType& _category)
 			{
 				DISPLAY("Using consumable: " , true);
 				//Remove(&_consumable->type);
+				break;
 			}
 			else
 			{

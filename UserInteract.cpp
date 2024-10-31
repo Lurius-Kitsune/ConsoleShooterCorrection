@@ -56,8 +56,8 @@ void DisplayMenu(const string* _options, const int _currentIndex, const u_int& _
 		string _firstSymbol = "", _secondSymbol = "" RESET;
 		if (_i == _currentIndex)
 		{
-			_firstSymbol = YELLOW "[";
-			_secondSymbol = YELLOW "]" RESET;
+			_firstSymbol = PURPLE "[";
+			_secondSymbol = PURPLE "]" RESET;
 		}
 		DISPLAY(_firstSymbol + (_i == _maxOptions ? "Quitter" : _options[_i]) + _secondSymbol, true);
 	}

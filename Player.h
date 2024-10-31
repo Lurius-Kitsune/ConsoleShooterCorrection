@@ -1,25 +1,12 @@
 #pragma once
-#include "WeaponWheel.h"
-#include "Inventory.h"
+#include "Entity.h"
 
-class Player
+class Player: public Entity
 {
-	WeaponWheel* wheel;
-	Inventory* inventory;
-
-public:
-	WeaponWheel* GetWheel()const
-	{
-		return wheel;
-	}
-
-	Inventory* GetInventory()const
-	{
-		return inventory;
-	}
+	u_int money;
 
 public:
 	Player();
-	~Player();
+	~Player() = default;
 };
 
