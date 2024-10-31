@@ -12,12 +12,10 @@ Weapon::Weapon(const string& _name, const string& _description, const string& _s
 
 string Weapon::ToString()const
 {
-	return "[Weapon] :" + (this ? name +
-		"\n\t->" + description + 
+	return skin + name + RESET +
+		"\n\t->" + description +
 		"\n\t->" + to_string(purchasePrice) + "€" +
-		+"\n\t->" + skin +
-		+"\n\t->" + to_string(accuracy)
-		: "NONE");
+		+"\n\t->" + to_string(accuracy);
 }
 
 void Weapon::Drop()

@@ -7,6 +7,8 @@ class Player: public Entity
 
 public:
 	Player();
+	Player(const string& _name, const int _life,
+		WeaponWheel* _wheel);
 	~Player() = default;
 };
 

@@ -5,6 +5,7 @@
 class Entity
 {
 	string name;
+	int maxLife;
 	int life;
 	Weapon* currentWeapon;
 	WeaponWheel* wheel;
@@ -23,13 +24,21 @@ public:
 
 public:
 	Entity();
+	Entity(const string& _name, const int _life,
+		WeaponWheel* _wheel);
+	Entity(const string& _name, const int _life, 
+		WeaponWheel* _wheel, Inventory* _inventory);
+
 	~Entity();
 
 
 public:
-	virtual string ToString();
+	//virtual void OpenInventory() = 0;
+	//virtual void ChangeWeapon(_weapo)
+	virtual void TakeDamage(const int _damage);
+	virtual string ToString()const;
 
 private:
-	string RenderLife();
+	string RenderLife()const;
 };
 

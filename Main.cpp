@@ -7,12 +7,12 @@ int main()
     Config();
     //DisplayRainbow("coucou <3");
 
-    WeaponWheel _wheel;
+    WeaponWheel* _wheel = new WeaponWheel;
     Weapon* _weapon = new WeaponRange("AK-47", "Pan-Pan", BLINK_TEXT  RED, 1000, 12.2f, 10, BT_PARTITION);
-    _wheel.AddWeapon(_weapon);
-    _wheel.RemoveWeapon(_weapon);
+    _wheel->AddWeapon(_weapon);
+    //_wheel.RemoveWeapon(_weapon);
 
-    Player* _player = new Player();
+    Player* _player = new Player(RainbowString("Thomas"), 20, _wheel);
 
     Shop _shop;
     //_shop.Open(_player);
@@ -23,7 +23,18 @@ int main()
         "Inventory"
     };
 
-	u_int _menuCount = size(_menu);
+    DISPLAY(_player->ToString(), true);
+    _player->TakeDamage(5);
+    DISPLAY(_player->ToString(), true);
+    _player->TakeDamage(5);
+    DISPLAY(_player->ToString(), true);
+    _player->TakeDamage(5);
+    DISPLAY(_player->ToString(), true);
+    _player->TakeDamage(3);
+    DISPLAY(_player->ToString(), true);
+    _player->TakeDamage(3);
+
+	/*u_int _menuCount = size(_menu);
     do
     {
         int _menuIndex = OpenMenu(_menu, _menuCount, "Que Faire ?");
@@ -40,7 +51,7 @@ int main()
 		{
 			break;
 		}
-    } while (true);
+    } while (true);*/
     delete _player;
     return EXIT_SUCCESS;
 }
