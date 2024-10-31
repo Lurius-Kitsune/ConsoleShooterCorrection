@@ -26,7 +26,7 @@ int main()
 	u_int _menuCount = size(_menu);
     do
     {
-        int _menuIndex = OpenMenu(_menu, _menuCount, "Quel Faire ?");
+        int _menuIndex = OpenMenu(_menu, _menuCount, "Que Faire ?");
         CLEAR_SCREEN;
 		if (_menuIndex == 0)
 		{
